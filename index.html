@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/Administrator/Downloads/neonet-updated.html# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project NEONET — Maternal &amp; Pediatric Telehealth</title>
+<link href="./Project NEONET — Maternal &amp; Pediatric Telehealth_files/css2" rel="stylesheet">
+<style>
+/* ── RESET & ROOT ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+:root{
+  --teal:#1D9E75; --teal-dk:#0F6E56; --teal-dkr:#085041; --teal-dkst:#04342C;
+  --teal-lt:#5DCAA5; --teal-pale:#E1F5EE; --teal-soft:#9FE1CB;
+  --coral:#D85A30; --coral-pale:#FAECE7; --coral-soft:#F5C4B3;
+  --gold:#BA7517; --gold-pale:#FAEEDA; --gold-soft:#FAC775;
+  --purple:#7F77DD; --purple-pale:#EEEDFE; --purple-dk:#3C3489;
+  --blue:#378ADD; --blue-pale:#E6F1FB; --blue-dk:#0C447C;
+  --sage:#4E8062; --sage-lt:#E4F0E8;
+  --bg:#fafaf8; --surface:#ffffff; --border:#E2DFD8; --border-md:#D3D1C7;
+  --ink:#1a1a18; --muted:#6b6a66; --muted-lt:#9B9A96;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.06);
+  --shadow-md:0 6px 24px rgba(0,0,0,.1);
+  --shadow-lg:0 18px 50px rgba(0,0,0,.14);
+  --r-sm:8px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+  --sidebar-w:252px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;}
+button{cursor:pointer;font-family:'DM Sans',sans-serif;}
+input,select,textarea{font-family:'DM Sans',sans-serif;}
+a{text-decoration:none;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border-md);border-radius:4px;}
+
+/* ── ICON SYSTEM ──────────────────────────────── */
+.ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ico svg{display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.ico-14 svg{width:14px;height:14px;} .ico-16 svg{width:16px;height:16px;}
+.ico-18 svg{width:18px;height:18px;} .ico-20 svg{width:20px;height:20px;}
+.ico-22 svg{width:22px;height:22px;} .ico-24 svg{width:24px;height:24px;}
+.ico-28 svg{width:28px;height:28px;} .ico-32 svg{width:32px;height:32px;}
+.ico-40 svg{width:40px;height:40px;}
+
+/* ── VIEW SYSTEM ──────────────────────────────── */
+.view{display:none;}
+.view.show{display:block;}
+#v-landing.show{display:block;}
+#v-login.show{display:flex;}
+#v-app.show{display:grid;}
+
+/* ══════════════════════════════════════════════
+   LANDING PAGE
+══════════════════════════════════════════════ */
+#v-landing{min-height:100vh;overflow-x:hidden;}
+
+/* NAV */
+.l-nav{
+  position:sticky;top:0;z-index:90;
+  background:rgba(250,250,248,.93);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:0 2.5rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.l-nav-logo{display:flex;align-items:center;gap:10px;}
+.l-nav-logo-box{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--teal);display:flex;align-items:center;justify-content:center;
+}
+.l-nav-wordmark{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--teal-dkr);letter-spacing:-.01em;}
+.l-nav-links{display:flex;gap:2rem;list-style:none;}
+.l-nav-links a{font-size:.875rem;font-weight:500;color:var(--muted);transition:color .2s;}
+.l-nav-links a:hover{color:var(--teal-dk);}
+.l-nav-cta{
+  background:var(--teal);color:#fff;padding:.5rem 1.25rem;
+  border-radius:var(--r-sm);font-size:.875rem;font-weight:500;
+  border:none;transition:background .2s,transform .15s;
+}
+.l-nav-cta:hover{background:var(--teal-dk);transform:translateY(-1px);}
+
+/* HERO */
+.l-hero{
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  gap:4rem;padding:5.5rem 5rem;min-height:88vh;position:relative;overflow:hidden;
+}
+.l-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:550px;height:550px;border-radius:50%;background:var(--teal-pale);z-index:0;}
+.l-hero::after{content:'';position:absolute;bottom:-60px;left:42%;width:260px;height:260px;border-radius:50%;background:var(--coral-pale);z-index:0;}
+.l-hero-content{position:relative;z-index:1;}
+.l-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--teal-pale);color:var(--teal-dk);
+  padding:.35rem .875rem;border-radius:100px;
+  font-size:.78rem;font-weight:500;margin-bottom:1.5rem;border:1px solid var(--teal-soft);
+}
+.l-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:ping 2s infinite;}
+@keyframes ping{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+.l-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:600;line-height:1.15;color:#0d0d0c;margin-bottom:1.25rem;letter-spacing:-.02em;}
+.l-hero h1 em{font-style:italic;color:var(--teal-dk);}
+.l-hero-sub{font-size:1.05rem;color:var(--muted);max-width:480px;margin-bottom:2.5rem;font-weight:300;line-height:1.85;}
+.l-hero-btns{display:flex;gap:1rem;align-items:center;}
+.btn-primary{background:var(--teal);color:#fff;padding:.875rem 2rem;border-radius:var(--r-sm);font-size:.95rem;font-weight:500;border:none;transition:background .2s,transform .15s;display:inline-block;}
+.btn-primary:hover{background:var(--teal-dk);transform:translateY(-1px);}
+.btn-ghost{color:var(--teal-dk);padding:.875rem 1.5rem;font-size:.95rem;font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:gap .2s;background:none;border:none;}
+.btn-ghost:hover{gap:12px;}
+.l-hero-visual{position:relative;z-index:1;display:flex;flex-direction:column;gap:1rem;}
+.l-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.875rem;}
+.l-stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;position:relative;overflow:hidden;}
+.l-stat-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;}
+.l-stat-card.tc::after{background:var(--teal);} .l-stat-card.co::after{background:var(--coral);}
+.l-stat-card.pu::after{background:var(--purple);} .l-stat-card.go::after{background:var(--gold);}
+.l-stat-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem;}
+.l-stat-icon.tc{background:var(--teal-pale);color:var(--teal);}
+.l-stat-icon.co{background:var(--coral-pale);color:var(--coral);}
+.l-stat-icon.pu{background:var(--purple-pale);color:var(--purple);}
+.l-stat-icon.go{background:var(--gold-pale);color:var(--gold);}
+.l-stat-lbl{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem;}
+.l-stat-val{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;color:#0d0d0c;line-height:1;}
+.l-stat-sub{font-size:.72rem;color:var(--muted);margin-top:4px;}
+.l-device-banner{background:var(--teal-dkr);border-radius:var(--r-md);padding:1.1rem 1.4rem;display:flex;align-items:center;gap:1rem;color:var(--teal-pale);}
+.l-device-dot{width:10px;height:10px;border-radius:50%;background:var(--teal-lt);animation:ping 2s infinite;flex-shrink:0;}
+.l-device-txt{font-size:.85rem;} .l-device-txt strong{font-weight:600;color:#fff;}
+
+/* SECTIONS */
+.l-section{padding:6rem 5rem;}
+.l-section-lbl{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:.875rem;}
+.l-section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:600;line-height:1.2;letter-spacing:-.02em;color:#0d0d0c;margin-bottom:.875rem;}
+.l-section-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.85;font-weight:300;}
+
+/* RATIONALE */
+.l-rationale{background:#f3f0ea;border-radius:var(--r-xl);margin:0 3rem;padding:5rem;}
+.l-rationale-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start;}
+.l-problem-list{display:flex;flex-direction:column;gap:.875rem;}
+.l-problem{display:flex;align-items:flex-start;gap:.875rem;background:var(--surface);border-radius:var(--r-sm);padding:.875rem 1.1rem;border:1px solid var(--border);}
+.l-problem-num{width:26px;height:26px;border-radius:50%;background:var(--coral-pale);color:var(--coral);font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.l-problem p{font-size:.875rem;line-height:1.55;}
+.l-quote{border-left:3px solid var(--teal);padding-left:1.4rem;margin-bottom:1.5rem;}
+.l-quote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;line-height:1.75;color:var(--teal-dkr);}
+.l-quote cite{display:block;margin-top:.625rem;font-style:normal;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;color:var(--muted);}
+.l-tip{background:var(--teal-pale);border-radius:var(--r-sm);padding:1.1rem;border:1px solid var(--teal-soft);}
+.l-tip p:first-child{font-size:.85rem;font-weight:500;color:var(--teal-dkr);margin-bottom:.3rem;}
+.l-tip p:last-child{font-size:.78rem;color:var(--teal-dk);}
+
+/* FEATURES */
+.l-features{background:var(--surface);}
+.l-features-hd{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:3.5rem;align-items:end;}
+.l-feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem;}
+.l-feat-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.875rem;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;}
+.l-feat-card:hover{border-color:var(--teal-soft);transform:translateY(-4px);}
+.l-feat-num{position:absolute;top:1.5rem;right:1.5rem;font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:600;color:var(--border-md);line-height:1;}
+.l-feat-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
+.l-feat-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;margin-bottom:.625rem;color:#0d0d0c;}
+.l-feat-card p{font-size:.85rem;color:var(--muted);line-height:1.7;}
+.l-feat-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem;}
+.l-tag{font-size:.7rem;font-weight:500;padding:.2rem .6rem;border-radius:100px;}
+
+/* VITALSYNC SECTION */
+.l-vitalsync{background:var(--teal-dkr);border-radius:var(--r-xl);margin:0 3rem;padding:5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.l-vs-lbl{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-lt);margin-bottom:.875rem;}
+.l-vs-title{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:600;color:#fff;margin-bottom:.875rem;}
+.l-vs-sub{font-size:.95rem;color:var(--teal-soft);line-height:1.8;margin-bottom:2rem;font-weight:300;}
+.l-device-cards{display:flex;flex-direction:column;gap:.875rem;}
+.l-dev-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:var(--r-md);padding:1.1rem;display:flex;align-items:center;gap:.875rem;}
+.l-dev-icon{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.11);display:flex;align-items:center;justify-content:center;color:var(--teal-lt);flex-shrink:0;}
+.l-dev-lbl{font-size:.75rem;color:var(--teal-soft);font-weight:500;margin-bottom:2px;}
+.l-dev-name{font-size:.95rem;font-weight:500;color:#fff;}
+.l-live{background:rgba(93,202,165,.2);color:var(--teal-lt);border:1px solid rgba(93,202,165,.35);font-size:.68rem;font-weight:600;padding:.2rem .5rem;border-radius:100px;display:flex;align-items:center;gap:4px;margin-left:auto;flex-shrink:0;}
+.l-live-dot{width:5px;height:5px;border-radius:50%;background:var(--teal-lt);animation:ping 2s infinite;}
+
+/* PROGRAMS */
+.l-programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.875rem;margin-top:2.5rem;}
+.l-prog-pill{background:var(--teal-pale);border:1px solid var(--teal-soft);border-radius:var(--r-sm);padding:.875rem 1.1rem;}
+.l-prog-pill p{font-size:.82rem;font-weight:500;color:var(--teal-dkr);line-height:1.4;}
+.l-prog-pill span{font-size:.68rem;color:var(--teal-dk);}
+
+/* DISCIPLINES */
+.l-disciplines{background:#f3f0ea;border-radius:var(--r-xl);margin:3rem;padding:5rem;text-align:center;}
+.l-disc-logos{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-top:2.5rem;}
+.l-disc-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:.875rem 1.5rem;font-size:.85rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:.6rem;transition:border-color .2s,color .2s;}
+.l-disc-item:hover{border-color:var(--teal-soft);color:var(--teal-dk);}
+.l-disc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* FOOTER */
+.l-footer{background:var(--teal-dkst);color:var(--teal-soft);padding:4rem 5rem 2.5rem;}
+.l-footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem;}
+.l-footer-brand{display:flex;flex-direction:column;gap:.875rem;}
+.l-footer-logo{display:flex;align-items:center;gap:10px;}
+.l-footer-logo-box{width:34px;height:34px;background:var(--teal);border-radius:9px;display:flex;align-items:center;justify-content:center;}
+.l-footer-wordmark{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:#fff;}
+.l-footer-desc{font-size:.85rem;color:var(--teal-soft);line-height:1.75;max-width:270px;font-weight:300;}
+.l-footer-col h4{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#fff;margin-bottom:1.1rem;}
+.l-footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.l-footer-col a{font-size:.85rem;color:var(--teal-soft);transition:color .2s;font-weight:300;}
+.l-footer-col a:hover{color:#fff;}
+.l-footer-bottom{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(159,225,203,.5);}
+
+/* ══════════════════════════════════════════════
+   LOGIN PAGE
+══════════════════════════════════════════════ */
+#v-login{
+  position:fixed;inset:0;z-index:50;
+  background:var(--bg);
+  display:flex;
+  opacity:0;pointer-events:none;
+  transition:opacity .4s ease;
+}
+#v-login.show{opacity:1;pointer-events:all;}
+.lg-hero{
+  flex:1;
+  background:linear-gradient(145deg,var(--teal-dkst) 0%,var(--teal-dkr) 50%,var(--teal-dk) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:3rem;position:relative;overflow:hidden;
+}
+.lg-hero::before{content:'';position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(212,96,74,.2) 0%,transparent 70%);top:-80px;right:-100px;}
+.lg-hero::after{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.05) 0%,transparent 70%);bottom:-50px;left:-60px;}
+.lg-hero-logo{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:600;color:#fff;letter-spacing:.05em;position:relative;z-index:1;}
+.lg-hero-logo span{color:var(--coral-soft);}
+.lg-tagline{color:rgba(255,255,255,.7);font-size:.95rem;margin-top:.5rem;text-align:center;line-height:1.65;position:relative;z-index:1;max-width:300px;}
+.lg-badges{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:2rem;position:relative;z-index:1;}
+.lg-badge-item{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:40px;padding:.4rem .9rem;font-size:.75rem;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:.4rem;}
+.lg-panel{
+  width:440px;flex-shrink:0;
+  background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:3.5rem 3rem;
+}
+.lg-back{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted);margin-bottom:2rem;align-self:flex-start;background:none;border:none;cursor:pointer;transition:color .2s;}
+.lg-back:hover{color:var(--teal);}
+.lg-panel h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--teal-dkst);margin-bottom:.3rem;}
+.lg-panel > p{color:var(--muted);font-size:.875rem;margin-bottom:2rem;}
+.lg-form{width:100%;}
+.lg-role-selector{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.4rem;}
+.lg-role-btn{
+  border:1.5px solid var(--border-md);background:var(--bg);
+  border-radius:var(--r-sm);padding:.875rem;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  font-size:.8rem;font-weight:600;color:var(--muted);
+  transition:all .2s;cursor:pointer;
+}
+.lg-role-btn .ricon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--border);color:var(--muted);transition:all .2s;}
+.lg-role-btn.active{border-color:var(--teal);background:var(--teal-pale);color:var(--teal-dk);}
+.lg-role-btn.active .ricon{background:var(--teal);color:#fff;}
+.lg-group{margin-bottom:1.1rem;}
+.lg-group label{display:block;font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;}
+.lg-group input{
+  width:100%;padding:.7rem .9rem;border:1.5px solid var(--border-md);border-radius:var(--r-sm);
+  font-size:.9rem;background:var(--bg);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.lg-group input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(29,158,117,.12);}
+.lg-helpers{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;font-size:.78rem;}
+.lg-helpers label{display:flex;align-items:center;gap:.4rem;color:var(--muted);cursor:pointer;}
+.lg-helpers input[type=checkbox]{accent-color:var(--teal);}
+.lg-helpers a{color:var(--teal);font-weight:600;}
+.lg-submit{
+  width:100%;background:linear-gradient(135deg,var(--teal),var(--teal-dk));
+  color:#fff;border:none;border-radius:var(--r-sm);padding:.875rem;
+  font-size:.95rem;font-weight:600;letter-spacing:.02em;margin-top:.25rem;
+  transition:transform .15s,box-shadow .2s;box-shadow:var(--shadow-sm);
+}
+.lg-submit:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);}
+.lg-submit:active{transform:translateY(0);}
+.lg-footer{margin-top:1.25rem;text-align:center;font-size:.8rem;color:var(--muted);}
+.lg-footer a{color:var(--teal);font-weight:600;}
+.lg-hint{margin-top:1.25rem;background:var(--teal-pale);border-radius:var(--r-sm);padding:.75rem 1rem;font-size:.78rem;color:var(--teal-dk);text-align:center;border:1px solid var(--teal-soft);}
+
+/* ══════════════════════════════════════════════
+   APP DASHBOARD
+══════════════════════════════════════════════ */
+#v-app{
+  position:fixed;inset:0;z-index:40;
+  display:grid;grid-template-columns:var(--sidebar-w) 1fr;
+  opacity:0;pointer-events:none;
+  transition:opacity .45s ease;
+}
+#v-app.show{opacity:1;pointer-events:all;}
+
+/* SIDEBAR */
+.ap-sidebar{
+  background:var(--teal-dkst);display:flex;flex-direction:column;
+  overflow-y:auto;overflow-x:hidden;
+}
+.ap-sidebar-hd{padding:1.5rem 1.25rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.08);}
+.ap-sidebar-logo{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;color:#fff;letter-spacing:.04em;}
+.ap-sidebar-logo span{color:var(--coral-soft);}
+.ap-sidebar-sub{font-size:.65rem;color:rgba(255,255,255,.38);letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+.ap-patient{margin:.875rem .875rem .7rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-sm);padding:.75rem .875rem;display:flex;align-items:center;gap:.75rem;}
+.ap-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--coral-soft),var(--gold-soft));display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--teal-dkst);font-weight:700;flex-shrink:0;}
+.ap-patient-name{font-size:.82rem;font-weight:600;color:#fff;}
+.ap-patient-meta{font-size:.68rem;color:rgba(255,255,255,.45);margin-top:1px;}
+.ap-nav-lbl{font-size:.62rem;font-weight:600;color:rgba(255,255,255,.28);letter-spacing:.1em;text-transform:uppercase;padding:.75rem 1.25rem .35rem;}
+.ap-nav-btn{
+  display:flex;align-items:center;gap:.75rem;padding:.65rem 1.25rem;
+  border:none;background:none;color:rgba(255,255,255,.58);
+  font-size:.845rem;font-weight:500;width:100%;text-align:left;
+  transition:all .18s;position:relative;cursor:pointer;
+}
+.ap-nav-btn:hover{color:#fff;background:rgba(255,255,255,.06);}
+.ap-nav-btn.active{color:#fff;background:rgba(255,255,255,.1);}
+.ap-nav-btn.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--coral-soft);border-radius:0 2px 2px 0;}
+.ap-nav-ico{flex-shrink:0;opacity:.75;}
+.ap-nav-btn:hover .ap-nav-ico,.ap-nav-btn.active .ap-nav-ico{opacity:1;}
+.ap-nav-badge{margin-left:auto;background:var(--coral);color:#fff;font-size:.62rem;font-weight:700;border-radius:20px;padding:.1rem .45rem;min-width:18px;text-align:center;}
+.ap-sidebar-foot{margin-top:auto;padding:.875rem .875rem 1rem;border-top:1px solid rgba(255,255,255,.07);}
+.ap-logout{display:flex;align-items:center;gap:.75rem;width:100%;border:none;background:none;color:rgba(255,255,255,.45);font-size:.82rem;padding:.55rem .875rem;border-radius:var(--r-sm);transition:all .18s;cursor:pointer;}
+.ap-logout:hover{color:#fff;background:rgba(255,255,255,.07);}
+
+/* MAIN CONTENT */
+.ap-main{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+.ap-topbar{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:.875rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+}
+.ap-topbar-title{font-size:1.35rem;font-weight:600;color:var(--teal-dkst);letter-spacing:-.01em;}
+.ap-topbar-meta{font-size:.78rem;color:var(--muted);margin-top:2px;}
+.ap-topbar-actions{display:flex;align-items:center;gap:.75rem;}
+.ap-topbar-btn{border:1.5px solid var(--border-md);background:var(--surface);border-radius:var(--r-sm);padding:.4rem .875rem;font-size:.8rem;font-weight:600;color:var(--muted);transition:all .18s;display:flex;align-items:center;gap:.4rem;cursor:pointer;}
+.ap-topbar-btn:hover{border-color:var(--teal);color:var(--teal);}
+.ap-topbar-btn.primary{background:var(--coral);border-color:var(--coral);color:#fff;}
+.ap-topbar-btn.primary:hover{background:var(--coral-soft);}
+.notif-wrap{position:relative;}
+.notif-dot{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--coral);border:2px solid var(--surface);}
+
+/* PANELS */
+.ap-content{flex:1;overflow-y:auto;padding:1.75rem 2rem;}
+.ap-panel{display:none;animation:fadeUp .3s ease;}
+.ap-panel.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:1.3rem 1.5rem;margin-bottom:1.1rem;}
+.card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem;}
+.card-title{font-size:1rem;font-weight:600;color:var(--teal-dkst);}
+.cbadge{font-size:.7rem;font-weight:600;padding:.25rem .65rem;border-radius:20px;letter-spacing:.02em;}
+.cbadge-g{background:#e8f8ee;color:#2d7a4f;} .cbadge-r{background:var(--coral-pale);color:var(--coral);}
+.cbadge-t{background:var(--teal-pale);color:var(--teal-dk);} .cbadge-o{background:var(--gold-pale);color:var(--gold);}
+.cbadge-p{background:var(--purple-pale);color:var(--purple-dk);}
+
+/* STAT GRID */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:.875rem;margin-bottom:1.25rem;}
+.stat-mini{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.1rem;position:relative;overflow:hidden;box-shadow:var(--shadow-sm);}
+.stat-mini::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.sm-co::before{background:var(--coral);} .sm-te::before{background:var(--teal);}
+.sm-go::before{background:var(--gold);} .sm-gr::before{background:var(--sage);}
+.sm-pu::before{background:var(--purple);}
+.stat-mini .ico{margin-bottom:.4rem;color:var(--muted);}
+.stat-mini .sv{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;color:var(--teal-dkst);line-height:1;}
+.stat-mini .sl{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+
+/* SECTION HEADING */
+.sec-hd{font-size:1.4rem;font-weight:600;color:var(--teal-dkst);margin-bottom:1rem;letter-spacing:-.01em;}
+.sec-sub{font-size:.82rem;color:var(--muted);margin-bottom:1rem;margin-top:-.7rem;}
+
+/* TABS */
+.tab-bar{display:flex;gap:.2rem;border-bottom:2px solid var(--border);margin-bottom:1.25rem;flex-wrap:wrap;}
+.tab-btn{border:none;background:none;padding:.55rem 1rem;font-size:.83rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .18s;cursor:pointer;}
+.tab-btn.active{color:var(--teal);border-bottom-color:var(--teal);}
+.tab-pane{display:none;} .tab-pane.active{display:block;animation:fadeUp .25s ease;}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.875rem;margin-bottom:.875rem;}
+.form-row-3{grid-template-columns:repeat(3,1fr);}
+.form-group{display:flex;flex-direction:column;gap:.4rem;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.form-group input,.form-group select,.form-group textarea{
+  padding:.6rem .85rem;border:1.5px solid var(--border-md);border-radius:var(--r-sm);
+  font-size:.875rem;background:var(--bg);color:var(--ink);outline:none;transition:border-color .2s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal);background:var(--surface);}
+.form-group textarea{min-height:90px;resize:vertical;}
+.save-btn{background:var(--teal);color:#fff;border:none;border-radius:var(--r-sm);padding:.55rem 1.25rem;font-size:.82rem;font-weight:600;transition:background .18s;cursor:pointer;}
+.save-btn:hover{background:var(--teal-dk);}
+.btn-row{display:flex;gap:.75rem;margin-top:1.1rem;flex-wrap:wrap;}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;padding:.55rem .75rem;font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;border-bottom:2px solid var(--border);}
+td{padding:.7rem .75rem;font-size:.85rem;border-bottom:1px solid var(--border);vertical-align:middle;}
+tr:last-child td{border:none;}
+tr:hover td{background:var(--bg);}
+
+/* SCHEDULE ITEM */
+.sched-item{display:flex;align-items:center;gap:.875rem;padding:.75rem .875rem;border:1px solid var(--border);border-radius:var(--r-sm);margin-bottom:.6rem;background:var(--surface);cursor:pointer;transition:box-shadow .18s;}
+.sched-item:hover{box-shadow:var(--shadow-sm);}
+.sched-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.sched-time{font-size:.72rem;font-weight:700;color:var(--muted);min-width:52px;}
+.sched-lbl{font-size:.875rem;font-weight:600;color:var(--teal-dkst);}
+.sched-sub{font-size:.72rem;color:var(--muted);}
+.sched-action{margin-left:auto;font-size:.72rem;font-weight:600;color:var(--teal);border:1px solid var(--teal);border-radius:20px;padding:.2rem .6rem;white-space:nowrap;}
+
+/* PROGRESS BAR */
+.prog-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:.35rem;}
+.prog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--coral));}
+
+/* INFO CARD */
+.info-card{background:var(--bg);border-radius:var(--r-sm);padding:1rem 1.1rem;margin-bottom:.875rem;border-left:4px solid var(--teal);}
+.info-card h5{font-size:.85rem;font-weight:600;margin-bottom:.35rem;}
+.info-card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+/* DATA ROW */
+.drow{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);}
+.drow:last-child{border:none;}
+.drow .dk{font-size:.78rem;color:var(--muted);}
+.drow .dv{font-size:.85rem;font-weight:600;}
+
+/* MILESTONE */
+.ms-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.ms-item{background:var(--bg);border-radius:var(--r-sm);padding:.875rem;display:flex;align-items:flex-start;gap:.75rem;cursor:pointer;border:1px solid transparent;transition:all .18s;}
+.ms-item:hover{border-color:var(--teal-soft);}
+.ms-chk{width:22px;height:22px;border-radius:6px;border:2px solid var(--border-md);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;transition:all .2s;margin-top:1px;}
+.ms-chk.done{background:var(--sage);border-color:var(--sage);}
+.ms-item p{font-size:.82rem;font-weight:500;color:var(--teal-dkst);}
+.ms-item span{font-size:.7rem;color:var(--muted);}
+
+/* VACCINE TABLE */
+.vax-status{display:inline-flex;align-items:center;gap:5px;padding:.25rem .65rem;border-radius:20px;font-size:.72rem;font-weight:600;}
+.vs-done{background:var(--sage-lt);color:var(--sage);} .vs-due{background:var(--coral-pale);color:var(--coral);}
+.vs-upcoming{background:var(--gold-pale);color:var(--gold);}
+
+/* MEAL */
+.meal-section h5{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:.875rem 0 .5rem;display:flex;align-items:center;gap:.5rem;}
+.meal-section h5::after{content:'';flex:1;height:1px;background:var(--border);}
+.meal-item{display:flex;align-items:center;gap:.875rem;padding:.6rem .75rem;border-radius:var(--r-sm);margin-bottom:.35rem;transition:background .15s;cursor:pointer;}
+.meal-item:hover{background:var(--bg);}
+.meal-ico{width:32px;height:32px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.meal-name{font-size:.85rem;font-weight:500;color:var(--teal-dkst);}
+.meal-cal{font-size:.72rem;color:var(--muted);}
+.meal-badge{margin-left:auto;font-size:.72rem;color:var(--sage);font-weight:600;white-space:nowrap;}
+
+/* FEED LOG */
+.feed-entry{display:flex;align-items:center;gap:.875rem;padding:.6rem .875rem;background:var(--bg);border-radius:var(--r-sm);margin-bottom:.4rem;font-size:.85rem;}
+.fe-time{font-weight:700;color:var(--teal-dkst);min-width:60px;}
+.fe-dur{color:var(--muted);}
+.fe-side{margin-left:auto;background:var(--teal-pale);color:var(--teal-dk);font-size:.7rem;font-weight:600;padding:.15rem .5rem;border-radius:20px;}
+
+/* RX CARD */
+.rx-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.1rem;display:flex;align-items:flex-start;gap:.875rem;margin-bottom:.875rem;cursor:pointer;transition:border-color .18s,box-shadow .18s;}
+.rx-card:hover{border-color:var(--teal-soft);box-shadow:var(--shadow-sm);}
+.rx-ico{width:42px;height:42px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rx-name{font-size:.92rem;font-weight:600;color:var(--teal-dkst);}
+.rx-detail{font-size:.75rem;color:var(--muted);margin-top:2px;}
+.rx-status{margin-left:auto;font-size:.72rem;font-weight:600;padding:.2rem .6rem;border-radius:20px;align-self:flex-start;white-space:nowrap;flex-shrink:0;}
+
+/* EDU CARD */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
+.edu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s;}
+.edu-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.edu-thumb{height:100px;display:flex;align-items:center;justify-content:center;}
+.edu-body{padding:.875rem 1rem;}
+.edu-title{font-size:.875rem;font-weight:600;color:var(--teal-dkst);margin-bottom:.3rem;}
+.edu-meta{font-size:.72rem;color:var(--muted);}
+.edu-chip{display:inline-block;font-size:.65rem;padding:.2rem .55rem;border-radius:20px;margin-top:.5rem;font-weight:600;}
+
+/* CHAT */
+.chat-shell{display:flex;height:calc(100vh - 200px);background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);overflow:hidden;}
+.chat-contacts{width:210px;border-right:1px solid var(--border);overflow-y:auto;flex-shrink:0;}
+.chat-contacts h5{font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:1rem 1rem .5rem;}
+.chat-contact{padding:.875rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.75rem;transition:background .2s;}
+.chat-contact:hover,.chat-contact.active{background:var(--teal-pale);}
+.cc-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--teal-pale);color:var(--teal);}
+.cc-name{font-size:.82rem;font-weight:600;color:var(--teal-dkst);}
+.cc-role{font-size:.7rem;color:var(--muted);}
+.cc-dot{width:8px;height:8px;border-radius:50%;background:var(--sage);margin-left:auto;flex-shrink:0;}
+.chat-main{flex:1;display:flex;flex-direction:column;}
+.chat-topbar{padding:.875rem 1.1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.chat-topbar h5{font-size:.9rem;font-weight:600;color:var(--teal-dkst);}
+.chat-topbar span{font-size:.72rem;color:var(--sage);}
+.chat-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;}
+.msg{max-width:72%;}
+.msg.received{align-self:flex-start;}
+.msg.sent{align-self:flex-end;}
+.msg-bubble{padding:.65rem .9rem;border-radius:14px;font-size:.85rem;line-height:1.5;}
+.msg.received .msg-bubble{background:var(--bg);border-bottom-left-radius:4px;}
+.msg.sent .msg-bubble{background:var(--teal);color:#fff;border-bottom-right-radius:4px;}
+.msg-time{font-size:.65rem;color:var(--muted);margin-top:3px;}
+.msg.sent .msg-time{text-align:right;}
+.chat-input-bar{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;gap:.75rem;align-items:center;}
+.chat-inp{flex:1;padding:.55rem 1rem;border:1.5px solid var(--border-md);border-radius:20px;font-size:.85rem;outline:none;transition:border-color .2s;font-family:'DM Sans',sans-serif;}
+.chat-inp:focus{border-color:var(--teal);}
+.chat-send{width:36px;height:36px;border-radius:50%;background:var(--teal);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;flex-shrink:0;}
+.chat-send:hover{background:var(--teal-dk);transform:scale(1.06);}
+
+/* VITALS */
+.vital-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:.875rem;margin-bottom:1.25rem;}
+.vital-card{background:var(--surface);border-radius:var(--r-md);padding:1.1rem;border:1px solid var(--border);text-align:center;}
+.vc-ico{margin-bottom:.5rem;color:var(--muted);}
+.vc-val{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:600;color:var(--teal-dkst);}
+.vc-unit{font-size:.72rem;color:var(--muted);}
+.vc-lbl{font-size:.75rem;font-weight:600;margin-top:.3rem;}
+.vc-status{display:inline-block;font-size:.68rem;margin-top:.4rem;padding:.2rem .65rem;border-radius:20px;font-weight:600;}
+.vcs-ok{background:var(--sage-lt);color:var(--sage);}
+.vcs-watch{background:var(--gold-pale);color:var(--gold);}
+.pulse-ring{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--sage);animation:pulsering 1.6s ease infinite;margin-right:5px;vertical-align:middle;}
+@keyframes pulsering{0%{box-shadow:0 0 0 0 rgba(78,128,98,.4);}70%{box-shadow:0 0 0 9px rgba(78,128,98,0);}100%{box-shadow:0 0 0 0 rgba(78,128,98,0);}}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(4,52,44,.45);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--surface);border-radius:var(--r-xl);padding:2rem;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:fadeUp .28s ease;}
+.modal h3{font-family:'Playfair Display',serif;font-size:1.35rem;margin-bottom:.3rem;color:var(--teal-dkst);}
+.modal p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}
+.modal-close{float:right;background:var(--bg);border:none;border-radius:var(--r-sm);padding:.3rem .75rem;cursor:pointer;font-size:.9rem;color:var(--muted);transition:all .18s;}
+.modal-close:hover{background:var(--border);color:var(--ink);}
+.modal-actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1.1rem;}
+.btn-cancel{border:1.5px solid var(--border-md);background:var(--surface);border-radius:var(--r-sm);padding:.5rem 1.1rem;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer;}
+.btn-confirm{background:var(--teal);color:#fff;border:none;border-radius:var(--r-sm);padding:.5rem 1.1rem;font-size:.85rem;font-weight:600;cursor:pointer;}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--teal-dkst);color:#fff;padding:.75rem 1.1rem;border-radius:var(--r-sm);font-size:.85rem;font-weight:500;box-shadow:var(--shadow-md);z-index:999;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.success::before{content:'✓  ';color:var(--teal-lt);}
+.toast.info::before{content:'◈  ';color:var(--teal-soft);}
+.toast.warn::before{content:'⚠  ';color:var(--gold-soft);}
+
+/* ── MOBILE NAV DRAWER ─────────────────────────── */
+.l-nav-hamburger{
+  display:none;background:none;border:none;padding:.4rem;
+  color:var(--teal-dkr);cursor:pointer;
+}
+.l-mobile-drawer{
+  display:none;position:fixed;inset:0;z-index:200;
+}
+.l-mobile-drawer.open{display:block;}
+.l-drawer-backdrop{
+  position:absolute;inset:0;background:rgba(4,52,44,.5);
+  backdrop-filter:blur(4px);
+}
+.l-drawer-panel{
+  position:absolute;top:0;right:0;bottom:0;width:min(280px,80vw);
+  background:var(--surface);display:flex;flex-direction:column;
+  padding:1.5rem;box-shadow:var(--shadow-lg);
+  animation:slideInRight .25s ease;
+}
+@keyframes slideInRight{from{transform:translateX(100%);}to{transform:translateX(0);}}
+.l-drawer-close{
+  align-self:flex-end;background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:.3rem .75rem;font-size:.9rem;
+  color:var(--muted);cursor:pointer;margin-bottom:1.5rem;
+}
+.l-drawer-links{display:flex;flex-direction:column;gap:.25rem;list-style:none;}
+.l-drawer-links a{
+  display:block;padding:.75rem 1rem;font-size:.95rem;font-weight:500;
+  color:var(--ink);border-radius:var(--r-sm);transition:background .15s;
+}
+.l-drawer-links a:hover{background:var(--teal-pale);color:var(--teal-dk);}
+.l-drawer-signin{
+  margin-top:1.25rem;width:100%;background:var(--teal);color:#fff;
+  padding:.875rem;border-radius:var(--r-sm);font-size:.95rem;font-weight:500;
+  border:none;cursor:pointer;
+}
+
+/* ── APP MOBILE BOTTOM NAV ─────────────────────── */
+.ap-bottom-nav{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--teal-dkst);border-top:1px solid rgba(255,255,255,.1);
+  padding:.35rem 0 calc(.35rem + env(safe-area-inset-bottom));
+}
+.ap-bottom-nav-inner{
+  display:flex;align-items:stretch;justify-content:space-around;
+}
+.ap-bn-btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:.4rem .25rem;background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,.5);font-size:.6rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.04em;position:relative;
+  transition:color .18s;
+}
+.ap-bn-btn.active{color:#fff;}
+.ap-bn-btn.active::after{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:28px;height:2px;background:var(--coral-soft);border-radius:0 0 2px 2px;
+}
+.ap-bn-badge{
+  position:absolute;top:4px;right:calc(50% - 18px);
+  background:var(--coral);color:#fff;font-size:.55rem;font-weight:700;
+  border-radius:10px;padding:.05rem .3rem;min-width:14px;text-align:center;
+}
+/* More drawer for extra nav items */
+.ap-more-drawer{
+  position:fixed;bottom:0;left:0;right:0;z-index:105;
+  background:var(--teal-dkst);border-radius:var(--r-xl) var(--r-xl) 0 0;
+  padding:1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+  transform:translateY(100%);transition:transform .3s ease;
+  box-shadow:var(--shadow-lg);
+}
+.ap-more-drawer.open{transform:translateY(0);}
+.ap-more-drawer-hd{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.ap-more-drawer-hd span{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6);}
+.ap-more-close{background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;font-size:1.2rem;}
+.ap-more-items{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.ap-more-item{
+  display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;
+  background:rgba(255,255,255,.06);border-radius:var(--r-sm);
+  border:none;color:rgba(255,255,255,.7);font-size:.85rem;font-weight:500;
+  cursor:pointer;transition:all .18s;text-align:left;
+}
+.ap-more-item:hover,.ap-more-item.active{background:rgba(255,255,255,.13);color:#fff;}
+.ap-more-backdrop{
+  display:none;position:fixed;inset:0;z-index:104;
+  background:rgba(0,0,0,.4);
+}
+.ap-more-backdrop.open{display:block;}
+
+/* ── RESPONSIVE: TABLET (≤900px) ──────────────── */
+@media(max-width:900px){
+  #nav-signin-btn{display:none;}
+  /* Landing nav */
+  .l-nav{padding:0 1rem;}
+  .l-nav-links{display:none;}
+  .l-nav-hamburger{display:flex;align-items:center;justify-content:center;}
+
+  /* Sections */
+  .l-hero,.l-rationale-grid,.l-features-hd,.l-vitalsync,.l-footer-top{grid-template-columns:1fr;}
+  .l-section{padding:4rem 1.5rem;}
+  .l-rationale,.l-vitalsync,.l-disciplines{margin:0 .75rem;padding:3rem 1.5rem;}
+  .l-footer{padding:3rem 1.5rem;}
+  .l-programs-grid{grid-template-columns:1fr 1fr;}
+  .l-hero{padding:4rem 1.5rem;min-height:auto;}
+
+  /* Login */
+  #v-login{flex-direction:column;}
+  .lg-hero{display:none;}
+  .lg-panel{width:100%;max-width:420px;margin:auto;}
+
+  /* App */
+  #v-app{grid-template-columns:1fr;}
+  .ap-sidebar{display:none;}
+  .ap-bottom-nav{display:block;}
+  .ap-content{padding-bottom:calc(80px + env(safe-area-inset-bottom));}
+
+  /* Grids */
+  .g2,.g3{grid-template-columns:1fr;}
+  .ms-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+
+  /* Chat */
+  .chat-shell{flex-direction:column;height:auto;}
+  .chat-contacts{width:100%;height:100px;display:flex;flex-direction:row;overflow-x:auto;overflow-y:hidden;}
+  .chat-contacts h5{display:none;}
+  .chat-contact{min-width:100px;flex-direction:column;text-align:center;gap:.35rem;padding:.5rem .75rem;}
+  .cc-dot{display:none;}
+  .chat-msgs{max-height:40vh;}
+}
+
+/* ── RESPONSIVE: MOBILE (≤480px) ──────────────── */
+@media(max-width:480px){
+  html{font-size:15px;}
+
+  /* Landing */
+  .l-hero{padding:2.5rem 1rem;gap:2rem;}
+  .l-hero h1{font-size:2rem;}
+  .l-hero-btns{flex-direction:column;align-items:flex-start;}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;justify-content:center;}
+  .l-stat-grid{grid-template-columns:1fr 1fr;}
+  .l-section{padding:3rem 1rem;}
+  .l-rationale,.l-vitalsync,.l-disciplines{margin:0 .5rem;padding:2rem 1rem;}
+  .l-features-hd{gap:1rem;}
+  .l-section-title{font-size:1.6rem;}
+  .l-programs-grid{grid-template-columns:1fr;}
+  .l-footer{padding:2rem 1rem;}
+  .l-footer-top{gap:1.5rem;}
+  .l-footer-bottom{flex-direction:column;gap:.35rem;}
+  .l-disc-logos{gap:.5rem;}
+  .l-disc-item{padding:.6rem 1rem;font-size:.78rem;}
+
+  /* Topbar */
+  .ap-topbar{padding:.75rem 1rem;}
+  .ap-topbar-title{font-size:1.1rem;}
+  .ap-topbar-actions .ap-topbar-btn:not(.notif-wrap) span:last-child{display:none;}
+  .ap-topbar-btn.primary{padding:.4rem .65rem;}
+  .ap-topbar-meta{display:none;}
+
+  /* Stat rows */
+  .stat-row{grid-template-columns:repeat(3,1fr);}
+
+  /* Cards */
+  .card{padding:1rem 1rem;}
+
+  /* Tables – make horizontally scrollable */
+  .card > table, .card > div > table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+
+  /* Forms */
+  .form-row-3{grid-template-columns:1fr;}
+
+  /* Chat */
+  .chat-shell{height:auto;}
+  .chat-msgs{max-height:35vh;}
+  .chat-input-bar{padding:.5rem .75rem;}
+  .msg{max-width:90%;}
+
+  /* Edu grid */
+  .edu-grid{grid-template-columns:1fr 1fr;}
+
+  /* Vital cards */
+  .vital-cards{grid-template-columns:repeat(2,1fr);}
+
+  /* Toast – center bottom */
+  .toast{right:1rem;left:1rem;bottom:calc(70px + env(safe-area-inset-bottom));text-align:center;}
+
+  /* Login panel */
+  .lg-panel{padding:2rem 1.25rem;}
+  .lg-role-selector{grid-template-columns:1fr 1fr;}
+
+  /* Modal */
+  .modal{padding:1.25rem;}
+}
+</style>
+</head>
+<body style="">
+
+<!-- ═══════════════════════════════════════════
+     SVG ICON LIBRARY
+═══════════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></symbol>
+  <symbol id="i-plus-c" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 21 12 14 20 16 20 8c0-3.35-2-5-8-5z"></path></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></symbol>
+  <symbol id="i-act" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></symbol>
+  <symbol id="i-therm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1"></path><path d="M6.22 7.78L5.5 7.06"></path><path d="M3 12H2"></path><path d="M17.78 7.78l.72-.72"></path><path d="M21 12h1"></path><circle cx="12" cy="12" r="4"></circle><path d="M5 20h14"></path><path d="M12 16v4"></path></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.18 2 2 0 0 1 3.07 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></symbol>
+  <symbol id="i-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></symbol>
+  <symbol id="i-steth" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></symbol>
+  <symbol id="i-neonet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol>
+</svg>
+
+<!-- ═══════════════════════════════════════════
+     LANDING PAGE
+═══════════════════════════════════════════ -->
+<div id="v-landing" class="view show">
+
+  <!-- NAV -->
+  <nav class="l-nav">
+    <a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#" class="l-nav-logo">
+      <div class="l-nav-logo-box" style="background:transparent;width:auto;height:auto;padding:0;">
+        <img src="images/3 copy.png" alt="NEONET" style="height:36px;width:auto;display:block;mix-blend-mode:multiply;">
+      </div>
+      <img src="images/1 copy.png" alt="NEONET" style="height:28px;width:auto;display:block;">
+    </a>
+    <ul class="l-nav-links">
+      <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#about">About</a></li>
+      <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#features">Platform</a></li>
+      <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#vitalsync">VitalSync</a></li>
+      <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#programs">Programs</a></li>
+    </ul>
+    <button class="l-nav-cta" onclick="showLogin()" id="nav-signin-btn">Sign In</button>
+    <button class="l-nav-hamburger" onclick="openDrawer()" aria-label="Open menu">
+      <span class="ico ico-24"><svg><use href="#i-menu"></use></svg></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="l-mobile-drawer" id="mobile-drawer">
+    <div class="l-drawer-backdrop" onclick="closeDrawer()"></div>
+    <div class="l-drawer-panel">
+      <button class="l-drawer-close" onclick="closeDrawer()">✕ Close</button>
+      <ul class="l-drawer-links">
+        <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#about" onclick="closeDrawer()">About</a></li>
+        <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#features" onclick="closeDrawer()">Platform</a></li>
+        <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#vitalsync" onclick="closeDrawer()">VitalSync</a></li>
+        <li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#programs" onclick="closeDrawer()">Programs</a></li>
+      </ul>
+      <button class="l-drawer-signin" onclick="closeDrawer();showLogin()">Sign In</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="l-hero">
+    <div class="l-hero-content">
+      <div class="l-badge"><div class="l-badge-dot"></div> Nursing Informatics Final Project</div>
+      <h1>Connecting <em>mothers</em> and children with care</h1>
+      <p class="l-hero-sub">Project NEONET is a comprehensive telehealth platform bridging families in remote and rural areas with quality maternal and pediatric healthcare — right from their homes.</p>
+      <div class="l-hero-btns">
+        <button class="btn-primary" onclick="showLogin()">Get Started</button>
+        <a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#about" class="btn-ghost">Learn more <span style="font-size:1.1em">→</span></a>
+      </div>
+    </div>
+    <div class="l-hero-visual">
+      <div class="l-stat-grid">
+        <div class="l-stat-card tc">
+          <div class="l-stat-icon tc"><span class="ico ico-22"><svg><use href="#i-heart"></use></svg></span></div>
+          <div class="l-stat-lbl">Prenatal Visits</div>
+          <div class="l-stat-val">100%</div>
+          <div class="l-stat-sub">Telehealth-enabled</div>
+        </div>
+        <div class="l-stat-card co">
+          <div class="l-stat-icon co"><span class="ico ico-22"><svg><use href="#i-clip"></use></svg></span></div>
+          <div class="l-stat-lbl">Newborn Records</div>
+          <div class="l-stat-val">NeoNotes</div>
+          <div class="l-stat-sub">Digital baby book</div>
+        </div>
+        <div class="l-stat-card pu">
+          <div class="l-stat-icon pu"><span class="ico ico-22"><svg><use href="#i-wifi"></use></svg></span></div>
+          <div class="l-stat-lbl">Remote Monitoring</div>
+          <div class="l-stat-val">Real-time</div>
+          <div class="l-stat-sub">VitalSync devices</div>
+        </div>
+        <div class="l-stat-card go">
+          <div class="l-stat-icon go"><span class="ico ico-22"><svg><use href="#i-shield"></use></svg></span></div>
+          <div class="l-stat-lbl">DOH Programs</div>
+          <div class="l-stat-val">6+</div>
+          <div class="l-stat-sub">Integrated locally</div>
+        </div>
+      </div>
+      <div class="l-device-banner">
+        <div class="l-device-dot"></div>
+        <div class="l-device-txt"><strong>VitalSync Kit active</strong> — Real-time monitoring of blood pressure, fetal heart rate, and weight synced to your profile</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RATIONALE -->
+  <div id="about" style="padding:0 0 6rem;">
+    <div class="l-rationale">
+      <div class="l-section-lbl">Why NEONET</div>
+      <h2 class="l-section-title">Built to solve the Philippines' most pressing maternal care gaps</h2>
+      <div class="l-rationale-grid">
+        <div>
+          <p style="font-size:.95rem;color:var(--muted);margin-bottom:1.75rem;font-weight:300;line-height:1.85;">Healthcare in the Philippines faces deep-rooted challenges that disproportionately affect mothers and newborns in underserved communities. NEONET is designed to directly address these.</p>
+          <div class="l-problem-list">
+            <div class="l-problem"><div class="l-problem-num">1</div><p>Lack of services and health education in remote and rural areas</p></div>
+            <div class="l-problem"><div class="l-problem-num">2</div><p>Insufficient resources in hospitals and health facilities</p></div>
+            <div class="l-problem"><div class="l-problem-num">3</div><p>Facilities operating beyond capacity</p></div>
+            <div class="l-problem"><div class="l-problem-num">4</div><p>Shortage of medical and nursing staff</p></div>
+            <div class="l-problem"><div class="l-problem-num">5</div><p>Heavy reliance on outdated paper-based systems</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="l-quote">
+            <blockquote>"The future of healthcare is multidisciplinary. Fighting an infodemic requires communication and cooperation of professionals in various disciplines."<cite>— Dr. Isip-Tan, Philippine Council for Health Research and Development, 2023</cite></blockquote>
+          </div>
+          <div class="l-quote" style="margin-top:1.5rem;">
+            <blockquote>"Telemedicine is acceptable in providing prenatal and postnatal care as it allowed the necessary interaction between patients and the medical team."<cite>— Quiñones and Virgilio, 2022</cite></blockquote>
+          </div>
+          <div class="l-tip" style="margin-top:1.5rem;">
+            <p>Critical factors for digital healthcare success</p>
+            <p>Internet · Innovation · Inclusion</p>
+            <p style="font-size:.72rem;color:var(--muted);margin-top:.35rem;">— Dr. Batapa-Sigue, 2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="l-section l-features" id="features" style="background:var(--surface);">
+    <div class="l-features-hd">
+      <div>
+        <div class="l-section-lbl">Platform Sections</div>
+        <h2 class="l-section-title">Seven integrated tools for complete maternal care</h2>
+      </div>
+      <p class="l-section-sub">Each module of NEONET is designed around real clinical workflows, ensuring information flows seamlessly between families and their healthcare providers.</p>
+    </div>
+    <div class="l-feature-grid">
+      <div class="l-feat-card"><span class="l-feat-num">01</span>
+        <div class="l-feat-icon" style="background:var(--teal-pale);color:var(--teal);"><span class="ico ico-24"><svg><use href="#i-clip"></use></svg></span></div>
+        <h3>MaternaLog</h3><p>A comprehensive digital pregnancy journal capturing demographic data, obstetric history, biometrics, vitals, clinical orders, lab results, prenatal records, and the partograph — visible only to authorized health providers.</p>
+        <div class="l-feat-tags"><span class="l-tag" style="background:var(--teal-pale);color:var(--teal-dkr);">Patient Data</span><span class="l-tag" style="background:var(--teal-pale);color:var(--teal-dkr);">FDAR Notes</span><span class="l-tag" style="background:var(--teal-pale);color:var(--teal-dkr);">MAR</span></div>
+      </div>
+      <div class="l-feat-card"><span class="l-feat-num">02</span>
+        <div class="l-feat-icon" style="background:var(--coral-pale);color:var(--coral);"><span class="ico ico-24"><svg><use href="#i-heart"></use></svg></span></div>
+        <h3>NeoNotes</h3><p>A digital "baby book" tracking birth profile, APGAR scores, immunization records per the Philippine Vaccine Schedule, growth charts (WHO standards), developmental milestones, and medical consultations.</p>
+        <div class="l-feat-tags"><span class="l-tag" style="background:var(--coral-pale);color:var(--coral);">Immunization</span><span class="l-tag" style="background:var(--coral-pale);color:var(--coral);">Growth Charts</span><span class="l-tag" style="background:var(--coral-pale);color:var(--coral);">Milestones</span></div>
+      </div>
+      <div class="l-feat-card"><span class="l-feat-num">03</span>
+        <div class="l-feat-icon" style="background:var(--purple-pale);color:var(--purple);"><span class="ico ico-24"><svg><use href="#i-book"></use></svg></span></div>
+        <h3>EmpowerEd</h3><p>A curated health education library with asynchronous videos and articles — covering pregnancy trimesters, labor, nutrition, mental wellness, warning signs, and DOH programs like Unang Yakap and the First 1,000 Days.</p>
+        <div class="l-feat-tags"><span class="l-tag" style="background:var(--purple-pale);color:var(--purple-dk);">Lecture Videos</span><span class="l-tag" style="background:var(--purple-pale);color:var(--purple-dk);">DOH Programs</span></div>
+      </div>
+      <div class="l-feat-card"><span class="l-feat-num">04</span>
+        <div class="l-feat-icon" style="background:#EAF3DE;color:#2d6a0a;"><span class="ico ico-24"><svg><use href="#i-plus-c"></use></svg></span></div>
+        <h3>PharmaSync</h3><p>An integrated online pharmacy module where prescriptions are securely stored alongside complete drug information — eliminating the need for in-person pharmacy visits for routine medications.</p>
+        <div class="l-feat-tags"><span class="l-tag" style="background:#EAF3DE;color:#27500A;">Prescriptions</span><span class="l-tag" style="background:#EAF3DE;color:#27500A;">Drug Info</span></div>
+      </div>
+      <div class="l-feat-card"><span class="l-feat-num">05</span>
+        <div class="l-feat-icon" style="background:var(--gold-pale);color:var(--gold);"><span class="ico ico-24"><svg><use href="#i-leaf"></use></svg></span></div>
+        <h3>NutriBase</h3><p>Personalized meal plans for pre- and post-natal mothers, essential nutrients guide, foods to avoid, breastfeeding frequency logs, vitamin supplementation tracking, and a solid food introduction timeline for infants.</p>
+        <div class="l-feat-tags"><span class="l-tag" style="background:var(--gold-pale);color:var(--gold);">Meal Plans</span><span class="l-tag" style="background:var(--gold-pale);color:var(--gold);">BF Log</span></div>
+      </div>
+      <div class="l-feat-card"><span class="l-feat-num">06</span>
+        <div class="l-feat-icon" style="background:var(--blue-pale);color:var(--blue);"><span class="ico ico-24"><svg><use href="#i-msg"></use></svg></span></div>
+        <h3>CareLine</h3><p>A secure communication portal enabling real-time text and chat with nurses and doctors, plus scheduled video call services — so concerns are addressed without requiring travel to the hospital.</p>
+        <div class="l-feat-tags"><span class="l-tag" style="background:var(--blue-pale);color:var(--blue-dk);">Secure Chat</span><span class="l-tag" style="background:var(--blue-pale);color:var(--blue-dk);">Video Calls</span></div>
+      </div>
+      <div class="l-feat-card" style="grid-column:span 2;background:var(--teal-pale);border-color:var(--teal-soft);"><span class="l-feat-num" style="color:var(--teal-soft);">07</span>
+        <div class="l-feat-icon" style="background:var(--teal-soft);color:var(--teal-dkr);"><span class="ico ico-24"><svg><use href="#i-act"></use></svg></span></div>
+        <h3>VitalSync Kit</h3><p>Integrated medical devices provided to families that sync directly with the NEONET system — enabling real-time, accurate tracking and remote monitoring of essential vital signs so healthcare providers can assess patients without physical visits.</p>
+        <div class="l-feat-tags"><span class="l-tag" style="background:var(--teal-soft);color:var(--teal-dkr);">Real-time Sync</span><span class="l-tag" style="background:var(--teal-soft);color:var(--teal-dkr);">Blood Pressure</span><span class="l-tag" style="background:var(--teal-soft);color:var(--teal-dkr);">Fetal Heart Rate</span><span class="l-tag" style="background:var(--teal-soft);color:var(--teal-dkr);">Remote Assessment</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VITALSYNC HIGHLIGHT -->
+  <div id="vitalsync" style="padding:0 0 6rem;">
+    <div class="l-vitalsync">
+      <div>
+        <div class="l-vs-lbl">VitalSync Kit</div>
+        <h2 class="l-vs-title">Healthcare comes home</h2>
+        <p class="l-vs-sub">Families are equipped with integrated medical devices that sync directly with NEONET — enabling the healthcare team to remotely assess and monitor patients in real time.</p>
+        <button class="btn-primary" onclick="showLogin()">Access Platform</button>
+      </div>
+      <div class="l-device-cards">
+        <div class="l-dev-card">
+          <div class="l-dev-icon"><span class="ico ico-22"><svg><use href="#i-heart"></use></svg></span></div>
+          <div><div class="l-dev-lbl">Connected Device</div><div class="l-dev-name">Blood Pressure Monitor</div></div>
+          <div class="l-live"><div class="l-live-dot"></div>Live</div>
+        </div>
+        <div class="l-dev-card">
+          <div class="l-dev-icon"><span class="ico ico-22"><svg><use href="#i-scale"></use></svg></span></div>
+          <div><div class="l-dev-lbl">Connected Device</div><div class="l-dev-name">Smart Weighing Scale</div></div>
+          <div class="l-live"><div class="l-live-dot"></div>Live</div>
+        </div>
+        <div class="l-dev-card">
+          <div class="l-dev-icon"><span class="ico ico-22"><svg><use href="#i-act"></use></svg></span></div>
+          <div><div class="l-dev-lbl">Connected Device</div><div class="l-dev-name">Fetal Heart Rate Monitor</div></div>
+          <div class="l-live"><div class="l-live-dot"></div>Live</div>
+        </div>
+        <div class="l-dev-card">
+          <div class="l-dev-icon"><span class="ico ico-22"><svg><use href="#i-phone"></use></svg></span></div>
+          <div><div class="l-dev-lbl">Platform Integration</div><div class="l-dev-name">Postpartum BP Monitoring App</div></div>
+          <div class="l-live"><div class="l-live-dot"></div>Live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOH PROGRAMS -->
+  <section class="l-section" id="programs" style="background:var(--surface);">
+    <div style="max-width:860px;">
+      <div class="l-section-lbl">DOH Integration</div>
+      <h2 class="l-section-title">Rooted in national health programs</h2>
+      <p class="l-section-sub">EmpowerEd includes curated resources aligned with official Department of Health programs for maternal, neonatal, and child health in the Philippines.</p>
+      <div class="l-programs-grid">
+        <div class="l-prog-pill"><p>National Safe Motherhood Program</p><span>Maternal health policy</span></div>
+        <div class="l-prog-pill"><p>Unang Yakap (EINC)</p><span>Essential intrapartum &amp; newborn care</span></div>
+        <div class="l-prog-pill"><p>First 1,000 Days</p><span>RA 11148 — Kalusugan at Nutrisyon ng Mag-Nanay Act</span></div>
+        <div class="l-prog-pill"><p>MNCHN Strategy</p><span>Maternal, Neonatal, Child Health &amp; Nutrition</span></div>
+        <div class="l-prog-pill"><p>BEmONC &amp; CEmONC Networks</p><span>Emergency obstetric and newborn care</span></div>
+        <div class="l-prog-pill"><p>Micronutrient Supplementation Program</p><span>Iron, folic acid, iodine supplementation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINES -->
+  <div class="l-disciplines">
+    <div class="l-section-lbl">Multidisciplinary Approach</div>
+    <h2 class="l-section-title" style="max-width:560px;margin:0 auto .875rem;">Designed for collaboration across disciplines</h2>
+    <p class="l-section-sub" style="margin:0 auto;">As Dr. Isip-Tan stated, the future of healthcare is multidisciplinary. NEONET brings together the right professionals and technologies.</p>
+    <div class="l-disc-logos">
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--teal);"></div>OB-GYNE</div>
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--coral);"></div>Registered Nurses</div>
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--blue);"></div>Pediatricians</div>
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--sage);"></div>Nutritionists</div>
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--purple);"></div>Pharmacists</div>
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--gold);"></div>Nursing Informatics</div>
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--teal-dk);"></div>DOH Agencies</div>
+      <div class="l-disc-item"><div class="l-disc-dot" style="background:var(--muted);"></div>Health Technology</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="l-footer">
+    <div class="l-footer-top">
+      <div class="l-footer-brand">
+        <div class="l-footer-logo">
+          <div class="l-footer-logo-box"><span class="ico ico-18" style="color:#fff"><svg><use href="#i-neonet"></use></svg></span></div>
+          <span class="l-footer-wordmark">NEONET</span>
+        </div>
+        <p class="l-footer-desc">A comprehensive telehealth platform seamlessly connecting mothers and their children with healthcare providers — anytime, from anywhere in the Philippines.</p>
+      </div>
+      <div class="l-footer-col"><h4>Platform</h4><ul><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">MaternaLog</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">NeoNotes</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">EmpowerEd</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">PharmaSync</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">NutriBase</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">CareLine</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">VitalSync Kit</a></li></ul></div>
+      <div class="l-footer-col"><h4>About</h4><ul><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">Project Background</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">Rationale</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">Research Basis</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">DOH Programs</a></li></ul></div>
+      <div class="l-footer-col"><h4>Contact</h4><ul><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">CareLine Portal</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">For Providers</a></li><li><a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">Technical Support</a></li></ul></div>
+    </div>
+    <div class="l-footer-bottom">
+      <p>© 2025 Project NEONET. Nursing Informatics Final Project.</p>
+      <p>Designed for the Philippine healthcare system.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     LOGIN PAGE
+═══════════════════════════════════════════ -->
+<div id="v-login" class="view" style="display: flex;">
+  <div class="lg-hero">
+    <div class="lg-hero-logo" style="font-size:0;"><img src="images/2 copy.png" alt="NEONET" style="height:100px;width:auto;display:block;margin:0 auto;"></div>
+    <div class="lg-tagline">Connecting mothers and children with their healthcare team — anywhere, anytime.</div>
+    <div class="lg-badges">
+      <div class="lg-badge-item"><span class="ico ico-14" style="color:var(--teal-lt)"><svg><use href="#i-act"></use></svg></span> Telehealth</div>
+      <div class="lg-badge-item"><span class="ico ico-14" style="color:var(--teal-lt)"><svg><use href="#i-shield"></use></svg></span> Secure</div>
+      <div class="lg-badge-item"><span class="ico ico-14" style="color:var(--teal-lt)"><svg><use href="#i-heart"></use></svg></span> Maternal</div>
+      <div class="lg-badge-item"><span class="ico ico-14" style="color:var(--teal-lt)"><svg><use href="#i-clip"></use></svg></span> Pediatric</div>
+    </div>
+  </div>
+
+  <div class="lg-panel">
+    <button class="lg-back" onclick="showLanding()">
+      <span class="ico ico-16"><svg><use href="#i-arrow-l"></use></svg></span> Back to Home
+    </button>
+    <h2>Welcome Back</h2>
+    <p>Sign in to your NEONET account to continue.</p>
+
+    <div class="lg-form">
+      <label style="display:block;font-size:.78rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.6rem;">I am logging in as</label>
+      <div class="lg-role-selector">
+        <button class="lg-role-btn active" onclick="selectRole(this)">
+          <div class="ricon"><span class="ico ico-18"><svg><use href="#i-user"></use></svg></span></div>
+          <span>Patient / Parent</span>
+        </button>
+        <button class="lg-role-btn" onclick="selectRole(this)">
+          <div class="ricon"><span class="ico ico-18"><svg><use href="#i-steth"></use></svg></span></div>
+          <span>Health Provider</span>
+        </button>
+      </div>
+
+      <div class="lg-group">
+        <label>Email Address</label>
+        <input type="email" id="lg-email" placeholder="maria.santos@email.com" value="maria.santos@email.com">
+      </div>
+      <div class="lg-group">
+        <label>Password</label>
+        <input type="password" id="lg-pass" placeholder="••••••••" value="password123">
+      </div>
+      <div class="lg-helpers">
+        <label><input type="checkbox" checked=""> Remember me</label>
+        <a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">Forgot password?</a>
+      </div>
+      <button class="lg-submit" onclick="doLogin()">Sign In to NEONET</button>
+      <div class="lg-footer">Don't have an account? <a href="file:///C:/Users/Administrator/Downloads/neonet-updated.html#">Register here</a></div>
+      <div class="lg-hint">Demo: any email + any password will log you in.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     APP DASHBOARD
+═══════════════════════════════════════════ -->
+<div id="v-app" class="view" style="display: grid;">
+
+  <!-- SIDEBAR -->
+  <aside class="ap-sidebar">
+    <div class="ap-sidebar-hd">
+      <div class="ap-sidebar-logo" style="font-size:0;padding:0;background:none;"><img src="images/2 copy.png" alt="NEONET" style="height:40px;width:auto;display:block;margin:0 auto;"></div>
+      <div class="ap-sidebar-sub">Maternal &amp; Pediatric Telehealth</div>
+    </div>
+
+    <div class="ap-patient">
+      <div class="ap-avatar">MS</div>
+      <div>
+        <div class="ap-patient-name">Maria Santos</div>
+        <div class="ap-patient-meta">Patient · 28 wks AOG</div>
+      </div>
+    </div>
+
+    <div class="ap-nav-lbl">My Care</div>
+    <button class="ap-nav-btn active" onclick="showPanel(&#39;dashboard&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-home"></use></svg></span><span>Dashboard</span>
+    </button>
+    <button class="ap-nav-btn" onclick="showPanel(&#39;maternalog&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-clip"></use></svg></span><span>MaternaLog</span>
+    </button>
+    <button class="ap-nav-btn" onclick="showPanel(&#39;neonotes&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-heart"></use></svg></span><span>NeoNotes</span>
+    </button>
+
+    <div class="ap-nav-lbl">Support</div>
+    <button class="ap-nav-btn" onclick="showPanel(&#39;empowered&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-book"></use></svg></span><span>EmpowerEd</span>
+    </button>
+    <button class="ap-nav-btn" onclick="showPanel(&#39;pharmasync&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-plus-c"></use></svg></span><span>PharmaSync</span>
+    </button>
+    <button class="ap-nav-btn" onclick="showPanel(&#39;nutribase&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-leaf"></use></svg></span><span>NutriBase</span>
+    </button>
+
+    <div class="ap-nav-lbl">Connect</div>
+    <button class="ap-nav-btn" onclick="showPanel(&#39;careline&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-msg"></use></svg></span><span>CareLine</span>
+      <span class="ap-nav-badge">2</span>
+    </button>
+    <button class="ap-nav-btn" onclick="showPanel(&#39;vitalsync&#39;,this)">
+      <span class="ap-nav-ico ico ico-18"><svg><use href="#i-act"></use></svg></span><span>VitalSync Kit</span>
+    </button>
+
+    <div class="ap-sidebar-foot">
+      <button class="ap-logout" onclick="doLogout()">
+        <span class="ico ico-18"><svg><use href="#i-out"></use></svg></span> Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="ap-main">
+
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="ap-bottom-nav">
+    <div class="ap-bottom-nav-inner">
+      <button class="ap-bn-btn active" id="bn-dashboard" onclick="showPanel(&#39;dashboard&#39;,this);setBottomNav(this)">
+        <span class="ico ico-20"><svg><use href="#i-home"></use></svg></span>
+        Home
+      </button>
+      <button class="ap-bn-btn" id="bn-maternalog" onclick="showPanel(&#39;maternalog&#39;,this);setBottomNav(this)">
+        <span class="ico ico-20"><svg><use href="#i-clip"></use></svg></span>
+        MaternaLog
+      </button>
+      <button class="ap-bn-btn" id="bn-careline" onclick="showPanel(&#39;careline&#39;,this);setBottomNav(this)">
+        <span class="ico ico-20"><svg><use href="#i-msg"></use></svg></span>
+        CareLine
+        <span class="ap-bn-badge">2</span>
+      </button>
+      <button class="ap-bn-btn" id="bn-vitalsync" onclick="showPanel(&#39;vitalsync&#39;,this);setBottomNav(this)">
+        <span class="ico ico-20"><svg><use href="#i-act"></use></svg></span>
+        Vitals
+      </button>
+      <button class="ap-bn-btn" id="bn-more" onclick="openMoreDrawer()">
+        <span class="ico ico-20"><svg><use href="#i-menu"></use></svg></span>
+        More
+      </button>
+    </div>
+  </nav>
+
+  <!-- MORE DRAWER (mobile) -->
+  <div class="ap-more-backdrop open" id="more-backdrop" onclick="closeMoreDrawer()"></div>
+  <div class="ap-more-drawer open" id="more-drawer">
+    <div class="ap-more-drawer-hd">
+      <span>More Sections</span>
+      <button class="ap-more-close" onclick="closeMoreDrawer()">✕</button>
+    </div>
+    <div class="ap-more-items">
+      <button class="ap-more-item" onclick="showPanel(&#39;neonotes&#39;,this);closeMoreDrawer();setBottomNav(null)">
+        <span class="ico ico-18" style="color:var(--coral-soft)"><svg><use href="#i-heart"></use></svg></span> NeoNotes
+      </button>
+      <button class="ap-more-item" onclick="showPanel(&#39;empowered&#39;,this);closeMoreDrawer();setBottomNav(null)">
+        <span class="ico ico-18" style="color:var(--purple-pale)"><svg><use href="#i-book"></use></svg></span> EmpowerEd
+      </button>
+      <button class="ap-more-item" onclick="showPanel(&#39;pharmasync&#39;,this);closeMoreDrawer();setBottomNav(null)">
+        <span class="ico ico-18" style="color:#9FE1CB"><svg><use href="#i-plus-c"></use></svg></span> PharmaSync
+      </button>
+      <button class="ap-more-item" onclick="showPanel(&#39;nutribase&#39;,this);closeMoreDrawer();setBottomNav(null)">
+        <span class="ico ico-18" style="color:var(--gold-soft)"><svg><use href="#i-leaf"></use></svg></span> NutriBase
+      </button>
+    </div>
+    <button onclick="doLogout()" style="margin-top:1rem;width:100%;background:none;border:1px solid rgba(255,255,255,.15);border-radius:var(--r-sm);color:rgba(255,255,255,.5);padding:.65rem;font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;">
+      <span class="ico ico-16"><svg><use href="#i-out"></use></svg></span> Sign Out
+    </button>
+  </div>
+    <div class="ap-topbar">
+      <div>
+        <div class="ap-topbar-title" id="ap-title">Dashboard</div>
+        <div class="ap-topbar-meta" id="ap-meta">Good morning, Maria — Week 28 of pregnancy</div>
+      </div>
+      <div class="ap-topbar-actions">
+        <button class="ap-topbar-btn notif-wrap" onclick="openModal(&#39;m-notif&#39;)">
+          <span class="ico ico-18"><svg><use href="#i-bell"></use></svg></span>
+          <span class="notif-dot"></span>
+        </button>
+        <button class="ap-topbar-btn primary" onclick="showPanel(&#39;careline&#39;,document.querySelector(&#39;.ap-nav-btn:nth-of-type(8)&#39;))">
+          <span class="ico ico-16"><svg><use href="#i-plus"></use></svg></span> New Message
+        </button>
+      </div>
+    </div>
+
+    <div class="ap-content">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="ap-panel active" id="panel-dashboard">
+        <div class="stat-row">
+          <div class="stat-mini sm-co"><div class="ico ico-20 sm-ico" style="color:var(--coral)"><svg><use href="#i-heart"></use></svg></div><div class="sv">28</div><div class="sl">Weeks Pregnant</div></div>
+          <div class="stat-mini sm-te"><div class="ico ico-20" style="color:var(--teal)"><svg><use href="#i-cal"></use></svg></div><div class="sv">Sep 12</div><div class="sl">Est. Due Date</div></div>
+          <div class="stat-mini sm-go"><div class="ico ico-20" style="color:var(--gold)"><svg><use href="#i-act"></use></svg></div><div class="sv">118/76</div><div class="sl">Last BP (mmHg)</div></div>
+          <div class="stat-mini sm-gr"><div class="ico ico-20" style="color:var(--sage)"><svg><use href="#i-scale"></use></svg></div><div class="sv">62 kg</div><div class="sl">Current Weight</div></div>
+          <div class="stat-mini sm-pu"><div class="ico ico-20" style="color:var(--purple)"><svg><use href="#i-msg"></use></svg></div><div class="sv">2</div><div class="sl">New Messages</div></div>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="card-hd"><span class="card-title">Upcoming Appointments</span><span class="cbadge cbadge-t">3 Scheduled</span></div>
+            <div class="sched-item" onclick="showToast(&#39;Appointment details loaded&#39;,&#39;info&#39;)">
+              <div class="sched-dot" style="background:var(--coral)"></div>
+              <div><div class="sched-time">Jun 2</div><div class="sched-lbl">Prenatal Check-Up</div><div class="sched-sub">Dr. Reyes · 10:00 AM</div></div>
+              <span class="sched-action">View</span>
+            </div>
+            <div class="sched-item" onclick="showToast(&#39;Appointment details loaded&#39;,&#39;info&#39;)">
+              <div class="sched-dot" style="background:var(--gold)"></div>
+              <div><div class="sched-time">Jun 15</div><div class="sched-lbl">Ultrasound</div><div class="sched-sub">Radiologia Naga · 9:30 AM</div></div>
+              <span class="sched-action">View</span>
+            </div>
+            <div class="sched-item" onclick="showToast(&#39;Appointment details loaded&#39;,&#39;info&#39;)">
+              <div class="sched-dot" style="background:var(--teal)"></div>
+              <div><div class="sched-time">Jun 28</div><div class="sched-lbl">CareLine Video Call</div><div class="sched-sub">Nurse Ana · 2:00 PM</div></div>
+              <span class="sched-action">Join</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><span class="card-title">Today's Reminders</span><span class="cbadge cbadge-r">4 Tasks</span></div>
+            <div id="reminder-list">
+    <div onclick="toggleReminder(0)" style="display:flex;align-items:center;gap:.65rem;padding:.55rem 0;border-bottom:1px solid var(--border);cursor:pointer;">
+      <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--sage);background:var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.65rem;transition:all .2s;">✓</div>
+      <span style="font-size:.85rem;text-decoration:line-through;color:var(--muted);">Take Ferrous Sulfate after breakfast</span>
+    </div>
+    <div onclick="toggleReminder(1)" style="display:flex;align-items:center;gap:.65rem;padding:.55rem 0;border-bottom:1px solid var(--border);cursor:pointer;">
+      <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--border-md);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.65rem;transition:all .2s;"></div>
+      <span style="font-size:.85rem;text-decoration:;color:var(--ink);">Log blood pressure reading</span>
+    </div>
+    <div onclick="toggleReminder(2)" style="display:flex;align-items:center;gap:.65rem;padding:.55rem 0;border-bottom:1px solid var(--border);cursor:pointer;">
+      <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--border-md);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.65rem;transition:all .2s;"></div>
+      <span style="font-size:.85rem;text-decoration:;color:var(--ink);">Calcium supplement — after lunch</span>
+    </div>
+    <div onclick="toggleReminder(3)" style="display:flex;align-items:center;gap:.65rem;padding:.55rem 0;border-bottom:1px solid var(--border);cursor:pointer;">
+      <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--border-md);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.65rem;transition:all .2s;"></div>
+      <span style="font-size:.85rem;text-decoration:;color:var(--ink);">Check-in message to RN. Mendoza</span>
+    </div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd"><span class="card-title">Pregnancy Progress</span><span class="cbadge cbadge-g">2nd Trimester</span></div>
+          <div style="display:flex;align-items:center;gap:.875rem;margin-bottom:.5rem;">
+            <span style="font-size:.75rem;color:var(--muted);">Week 1</span>
+            <div class="prog-bar" style="flex:1;"><div class="prog-fill" style="width:66.7%"></div></div>
+            <span style="font-size:.75rem;color:var(--muted);">Week 40</span>
+          </div>
+          <p style="font-size:.82rem;color:var(--muted);">Your baby is now about the size of an eggplant and weighs approximately 1 kg. The lungs are developing rapidly!</p>
+        </div>
+      </div>
+
+      <!-- ── MATERNALOG ── -->
+      <div class="ap-panel" id="panel-maternalog">
+        <h2 class="sec-hd">MaternaLog</h2>
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab(&#39;ml&#39;,&#39;profile&#39;,this)">Profile</button>
+          <button class="tab-btn" onclick="switchTab(&#39;ml&#39;,&#39;diary&#39;,this)">My Diary</button>
+          <button class="tab-btn" onclick="switchTab(&#39;ml&#39;,&#39;records&#39;,this)">Clinical Records</button>
+          <button class="tab-btn" onclick="switchTab(&#39;ml&#39;,&#39;vitals&#39;,this)">Vital Signs</button>
+        </div>
+
+        <div class="tab-pane active" id="ml-profile">
+          <div class="card">
+            <div class="card-hd"><span class="card-title">Basic Information</span><button class="save-btn" onclick="showToast(&#39;Profile saved&#39;,&#39;success&#39;)">Save</button></div>
+            <div class="form-row"><div class="form-group"><label>Full Name</label><input value="Maria L. Santos"></div><div class="form-group"><label>Date of Birth</label><input type="date" value="1996-03-14"></div></div>
+            <div class="form-row"><div class="form-group"><label>Phone Number</label><input value="+63 912 345 6789"></div><div class="form-group"><label>Email Address</label><input value="maria.santos@email.com"></div></div>
+            <div class="form-group full"><label>Home Address</label><input value="123 Mayon St., Naga City, Camarines Sur"></div>
+          </div>
+          <div class="g2">
+            <div class="card"><div class="card-hd"><span class="card-title">Emergency Contact</span></div><div class="form-group" style="margin-bottom:.7rem"><label>Name</label><input value="Juan Santos"></div><div class="form-group" style="margin-bottom:.7rem"><label>Relationship</label><input value="Husband"></div><div class="form-group"><label>Phone</label><input value="+63 917 654 3210"></div></div>
+            <div class="card"><div class="card-hd"><span class="card-title">Healthcare Provider</span></div><div class="form-group" style="margin-bottom:.7rem"><label>OB-GYNE</label><input value="Dr. Ana Reyes, MD"></div><div class="form-group"><label>Receiving Nurse</label><input value="RN. Liza Mendoza"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><span class="card-title">Current Pregnancy</span></div>
+            <div class="form-row form-row-3"><div class="form-group"><label>Last Menstrual Period</label><input type="date" value="2024-12-06"></div><div class="form-group"><label>Est. Date of Delivery</label><input type="date" value="2025-09-12"></div><div class="form-group"><label>Age of Gestation</label><input value="28 weeks + 2 days"></div></div>
+            <div class="form-row"><div class="form-group"><label>Blood Type</label><select><option>O+</option><option>O-</option><option>A+</option><option>B+</option><option>AB+</option></select></div><div class="form-group"><label>Fetal Count</label><select><option selected="">Singleton</option><option>Twins</option><option>Triplets</option></select></div></div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><span class="card-title">Baseline Biometrics</span><button class="save-btn" onclick="showToast(&#39;Biometrics updated&#39;,&#39;success&#39;)">Update</button></div>
+            <div class="form-row form-row-3"><div class="form-group"><label>Height (cm)</label><input value="158"></div><div class="form-group"><label>Pre-preg. Weight (kg)</label><input value="55"></div><div class="form-group"><label>Current Weight (kg)</label><input value="62"></div></div>
+            <div class="form-row"><div class="form-group"><label>Baseline BP</label><input value="110/70 mmHg"></div><div class="form-group"><label>Allergies</label><input value="Penicillin"></div></div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="ml-diary">
+          <div class="card">
+            <div class="card-hd"><span class="card-title">New Journal Entry</span><input type="date" id="journal-date" style="width:auto;font-size:.8rem;border:1px solid var(--border-md);border-radius:var(--r-sm);padding:.35rem .65rem;background:var(--bg);outline:none;"></div>
+            <textarea id="journal-text" rows="4" placeholder="How are you feeling today? Write about symptoms, emotions, baby movements…" style="width:100%;padding:.7rem .875rem;border:1.5px solid var(--border-md);border-radius:var(--r-sm);font-size:.875rem;font-family:&#39;DM Sans&#39;,sans-serif;background:var(--bg);outline:none;resize:vertical;margin-bottom:.75rem;"></textarea>
+            <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;">
+              <span style="font-size:.78rem;color:var(--muted);">Mood:</span>
+              <button onclick="selectMood(this,&#39;Happy&#39;)" style="background:var(--teal-pale);color:var(--teal-dk);border:none;border-radius:20px;padding:.2rem .7rem;font-size:.78rem;cursor:pointer;font-weight:600;">Happy</button>
+              <button onclick="selectMood(this,&#39;Tired&#39;)" style="background:var(--gold-pale);color:var(--gold);border:none;border-radius:20px;padding:.2rem .7rem;font-size:.78rem;cursor:pointer;font-weight:600;">Tired</button>
+              <button onclick="selectMood(this,&#39;Anxious&#39;)" style="background:var(--purple-pale);color:var(--purple);border:none;border-radius:20px;padding:.2rem .7rem;font-size:.78rem;cursor:pointer;font-weight:600;">Anxious</button>
+              <button onclick="selectMood(this,&#39;Unwell&#39;)" style="background:var(--coral-pale);color:var(--coral);border:none;border-radius:20px;padding:.2rem .7rem;font-size:.78rem;cursor:pointer;font-weight:600;">Unwell</button>
+              <button class="save-btn" style="margin-left:auto;" onclick="saveJournal()">Save Entry</button>
+            </div>
+          </div>
+          <div id="journal-entries">
+            <div class="card"><div class="card-hd"><span class="card-title">May 12, 2025 · Week 28</span><span class="cbadge cbadge-g">Happy</span></div><p style="font-size:.875rem;line-height:1.65;">Felt the baby kick really strongly this morning! Had iron supplements on time. Slight backache in the afternoon — RN. Liza said this is normal.</p></div>
+            <div class="card"><div class="card-hd"><span class="card-title">May 10, 2025 · Week 28</span><span class="cbadge cbadge-o">Tired</span></div><p style="font-size:.875rem;line-height:1.65;">Very tired today. Ate lots of leafy greens and legumes as per the NutriBase plan. Blood pressure was 118/76 — nurse said that's great!</p></div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="ml-records">
+          <div class="card"><div class="card-hd"><span class="card-title">Clinical Orders &amp; Prescriptions</span></div><table><tbody><tr><th>Document</th><th>Date</th><th>Issued By</th><th>Action</th></tr><tr><td>Doctor's Order Sheet #3</td><td>May 8, 2025</td><td>Dr. Reyes</td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening document…&#39;,&#39;info&#39;)">View</button></td></tr><tr><td>Prescription – FeSO4 + Folate</td><td>May 8, 2025</td><td>Dr. Reyes</td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening document…&#39;,&#39;info&#39;)">View</button></td></tr><tr><td>Treatment &amp; Care Plan</td><td>Apr 20, 2025</td><td>Dr. Reyes</td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening document…&#39;,&#39;info&#39;)">View</button></td></tr></tbody></table></div>
+          <div class="card"><div class="card-hd"><span class="card-title">Laboratory Reports</span></div><table><tbody><tr><th>Test</th><th>Date</th><th>Result</th><th>Action</th></tr><tr><td>CBC – Complete Blood Count</td><td>Apr 30, 2025</td><td><span class="cbadge cbadge-g">Normal</span></td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening lab result…&#39;,&#39;info&#39;)">View</button></td></tr><tr><td>Urinalysis</td><td>Apr 30, 2025</td><td><span class="cbadge cbadge-g">Normal</span></td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening lab result…&#39;,&#39;info&#39;)">View</button></td></tr><tr><td>OGTT – Glucose Tolerance</td><td>May 1, 2025</td><td><span class="cbadge cbadge-o">Borderline</span></td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening lab result…&#39;,&#39;info&#39;)">View</button></td></tr><tr><td>Ultrasound (2nd Trimester)</td><td>Apr 25, 2025</td><td><span class="cbadge cbadge-g">Normal</span></td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening report…&#39;,&#39;info&#39;)">View</button></td></tr></tbody></table></div>
+          <div class="card"><div class="card-hd"><span class="card-title">Maternal Records</span></div><table><tbody><tr><th>Record</th><th>Date</th><th>Status</th><th>Action</th></tr><tr><td>Prenatal Record #3</td><td>May 8, 2025</td><td><span class="cbadge cbadge-t">Updated</span></td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening record…&#39;,&#39;info&#39;)">View</button></td></tr><tr><td>Partograph</td><td>—</td><td><span class="cbadge cbadge-r">Pending</span></td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Available during labor&#39;,&#39;info&#39;)">View</button></td></tr><tr><td>Informed Consent Form</td><td>Mar 5, 2025</td><td><span class="cbadge cbadge-g">Signed</span></td><td><button class="save-btn" style="font-size:.72rem;padding:.3rem .75rem;" onclick="showToast(&#39;Opening form…&#39;,&#39;info&#39;)">View</button></td></tr></tbody></table></div>
+        </div>
+
+        <div class="tab-pane" id="ml-vitals">
+          <div class="card"><div class="card-hd"><span class="card-title">Log Today's Vitals</span><button class="save-btn" onclick="showToast(&#39;Vitals recorded&#39;,&#39;success&#39;)">Record</button></div><div class="form-row form-row-3"><div class="form-group"><label>BP (mmHg)</label><input placeholder="e.g. 118/76"></div><div class="form-group"><label>Heart Rate (bpm)</label><input placeholder="e.g. 82"></div><div class="form-group"><label>Temperature (°C)</label><input placeholder="e.g. 36.5"></div></div><div class="form-row"><div class="form-group"><label>Weight (kg)</label><input placeholder="e.g. 62"></div><div class="form-group"><label>O₂ Saturation (%)</label><input placeholder="e.g. 98"></div></div></div>
+          <div class="card"><div class="card-hd"><span class="card-title">Recent Vital Signs</span></div><table><tbody><tr><th>Date</th><th>BP</th><th>HR</th><th>Temp</th><th>Wt (kg)</th><th>SpO₂</th></tr><tr><td>May 13</td><td>118/76</td><td>84</td><td>36.6°C</td><td>62.0</td><td>98%</td></tr><tr><td>May 10</td><td>120/78</td><td>86</td><td>36.7°C</td><td>61.8</td><td>97%</td></tr><tr><td>May 7</td><td>116/74</td><td>80</td><td>36.5°C</td><td>61.5</td><td>99%</td></tr><tr><td>May 3</td><td>115/72</td><td>78</td><td>36.4°C</td><td>61.0</td><td>98%</td></tr></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- ── NEONOTES ── -->
+      <div class="ap-panel" id="panel-neonotes">
+        <h2 class="sec-hd">NeoNotes — Baby Liam's Digital Book</h2>
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab(&#39;nn&#39;,&#39;birth&#39;,this)">Birth Profile</button>
+          <button class="tab-btn" onclick="switchTab(&#39;nn&#39;,&#39;immunization&#39;,this)">Immunization</button>
+          <button class="tab-btn" onclick="switchTab(&#39;nn&#39;,&#39;growth&#39;,this)">Growth</button>
+          <button class="tab-btn" onclick="switchTab(&#39;nn&#39;,&#39;milestones&#39;,this)">Milestones</button>
+          <button class="tab-btn" onclick="switchTab(&#39;nn&#39;,&#39;screenings&#39;,this)">Screenings</button>
+        </div>
+
+        <div class="tab-pane active" id="nn-birth">
+          <div class="g2">
+            <div class="card"><div class="card-hd"><span class="card-title">Birth Profile</span><span class="cbadge cbadge-t">Complete</span></div>
+              <div class="drow"><span class="dk">Full Name</span><span class="dv">Liam Miguel Santos</span></div>
+              <div class="drow"><span class="dk">Date of Birth</span><span class="dv">February 14, 2026</span></div>
+              <div class="drow"><span class="dk">Time</span><span class="dv">2:34 AM</span></div>
+              <div class="drow"><span class="dk">Gender</span><span class="dv">Male</span></div>
+              <div class="drow"><span class="dk">Blood Type</span><span class="dv">O+ (Positive)</span></div>
+              <div class="drow"><span class="dk">Type of Delivery</span><span class="dv">Normal Spontaneous Delivery</span></div>
+            </div>
+            <div class="card"><div class="card-hd"><span class="card-title">Birth Statistics</span></div>
+              <div class="drow"><span class="dk">Birth Weight</span><span class="dv">3.2 kg (3,200 g)</span></div>
+              <div class="drow"><span class="dk">Length at Birth</span><span class="dv">49 cm</span></div>
+              <div class="drow"><span class="dk">Head Circumference</span><span class="dv">34 cm</span></div>
+              <div class="drow"><span class="dk">Chest Circumference</span><span class="dv">32 cm</span></div>
+              <div class="drow"><span class="dk">APGAR Score</span><span class="dv">9 / 9</span></div>
+              <div class="drow"><span class="dk">Attending Doctor</span><span class="dv">Dr. Ana Reyes</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="nn-immunization">
+          <div class="info-card" style="border-left-color:var(--coral)"><h5>Upcoming Vaccine Alert</h5><p>DPT-HepB-HiB 2nd dose is due on <strong>May 22, 2026</strong>. Please schedule at City Health Center.</p></div>
+          <div class="card"><table><tbody><tr><th>Vaccine</th><th>Dose</th><th>Date Given</th><th>Clinic</th><th>Status</th></tr>
+            <tr><td>BCG (Tuberculosis)</td><td>1</td><td>Feb 14, 2026</td><td>Bicol Med Center</td><td><span class="vax-status vs-done"><span class="ico ico-14"><svg><use href="#i-check"></use></svg></span>Done</span></td></tr>
+            <tr><td>Hepatitis B</td><td>1</td><td>Feb 14, 2026</td><td>Bicol Med Center</td><td><span class="vax-status vs-done"><span class="ico ico-14"><svg><use href="#i-check"></use></svg></span>Done</span></td></tr>
+            <tr><td>Pentavalent (DPT-HepB-HiB)</td><td>2</td><td>—</td><td>—</td><td><span class="vax-status vs-due">Due Soon</span></td></tr>
+            <tr><td>OPV (Polio)</td><td>2</td><td>—</td><td>—</td><td><span class="vax-status vs-due">Due Soon</span></td></tr>
+            <tr><td>PCV (Pneumococcal)</td><td>1</td><td>Apr 14, 2026</td><td>City Health</td><td><span class="vax-status vs-upcoming">Upcoming</span></td></tr>
+            <tr><td>MMR</td><td>1</td><td>—</td><td>—</td><td><span class="vax-status vs-upcoming">Scheduled</span></td></tr>
+          </tbody></table></div>
+        </div>
+
+        <div class="tab-pane" id="nn-growth">
+          <div class="g2" style="margin-bottom:1rem;">
+            <div class="stat-mini sm-te" style="text-align:left;padding:1.1rem;"><div class="sl" style="margin-bottom:.25rem;">Current Weight</div><div class="sv">5.8 kg</div><div style="font-size:.7rem;color:var(--sage);margin-top:.2rem;font-weight:600;">50th percentile</div></div>
+            <div class="stat-mini sm-te" style="text-align:left;padding:1.1rem;"><div class="sl" style="margin-bottom:.25rem;">Current Length</div><div class="sv">58 cm</div><div style="font-size:.7rem;color:var(--sage);margin-top:.2rem;font-weight:600;">55th percentile</div></div>
+            <div class="stat-mini sm-te" style="text-align:left;padding:1.1rem;"><div class="sl" style="margin-bottom:.25rem;">Head Circumference</div><div class="sv">38 cm</div><div style="font-size:.7rem;color:var(--sage);margin-top:.2rem;font-weight:600;">45th percentile</div></div>
+            <div class="stat-mini sm-gr" style="text-align:left;padding:1.1rem;"><div class="sl" style="margin-bottom:.25rem;">Current Age</div><div class="sv">3 mo</div><div style="font-size:.7rem;color:var(--teal);margin-top:.2rem;font-weight:600;">Normal growth</div></div>
+          </div>
+          <div class="card"><div class="card-hd"><span class="card-title">Log New Measurement</span><button class="save-btn" onclick="showToast(&#39;Measurement logged&#39;,&#39;success&#39;)">Add</button></div><div class="form-row form-row-3"><div class="form-group"><label>Date</label><input type="date"></div><div class="form-group"><label>Weight (kg)</label><input placeholder="e.g. 5.2"></div><div class="form-group"><label>Length (cm)</label><input placeholder="e.g. 58"></div></div></div>
+        </div>
+
+        <div class="tab-pane" id="nn-milestones">
+          <p class="sec-sub">Tap a milestone to mark it achieved.</p>
+          <div class="card" style="margin-bottom:1rem;"><div class="card-hd"><span class="card-title">Gross Motor</span></div>
+            <div class="ms-grid">
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk done"><span class="ico ico-14"><svg><use href="#i-check"></use></svg></span></div><div><p>Lifts head when on tummy</p><span>1–2 months</span></div></div>
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk done"><span class="ico ico-14"><svg><use href="#i-check"></use></svg></span></div><div><p>Holds head steady</p><span>2–3 months</span></div></div>
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk"></div><div><p>Rolls over (tummy to back)</p><span>4–5 months</span></div></div>
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk"></div><div><p>Sits with support</p><span>4–6 months</span></div></div>
+            </div>
+          </div>
+          <div class="card"><div class="card-hd"><span class="card-title">Language &amp; Communication</span></div>
+            <div class="ms-grid">
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk done"><span class="ico ico-14"><svg><use href="#i-check"></use></svg></span></div><div><p>Responds to sounds</p><span>1–2 months</span></div></div>
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk done"><span class="ico ico-14"><svg><use href="#i-check"></use></svg></span></div><div><p>Coos and makes sounds</p><span>2–3 months</span></div></div>
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk"></div><div><p>Laughs and giggles</p><span>4 months</span></div></div>
+              <div class="ms-item" onclick="toggleMs(this)"><div class="ms-chk"></div><div><p>Babbles with expression</p><span>6 months</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="nn-screenings">
+          <div class="card"><div class="card-hd"><span class="card-title">Newborn Screening</span></div>
+            <div class="drow"><span class="dk">Date of Screening</span><span class="dv">February 17, 2026</span></div>
+            <div class="drow"><span class="dk">Result</span><span class="dv" style="color:var(--sage)">Normal — No disorders detected</span></div>
+            <div class="drow"><span class="dk">Hearing Test</span><span class="dv" style="color:var(--sage)">Passed — Both ears</span></div>
+          </div>
+          <div class="card"><div class="card-hd"><span class="card-title">Dental &amp; Oral Health</span></div>
+            <div class="drow"><span class="dk">First Tooth Expected</span><span class="dv">~6–10 months</span></div>
+            <div class="drow"><span class="dk">Current Status</span><span class="dv">No teeth yet (3 months)</span></div>
+            <div class="drow"><span class="dk">First Dental Visit</span><span class="dv">Recommended at 12 months</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── EMPOWERED ── -->
+      <div class="ap-panel" id="panel-empowered">
+        <h2 class="sec-hd">EmpowerEd — Health Education Library</h2>
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab(&#39;ed&#39;,&#39;pregnancy&#39;,this)">Pregnancy</button>
+          <button class="tab-btn" onclick="switchTab(&#39;ed&#39;,&#39;newborn&#39;,this)">Newborn Care</button>
+          <button class="tab-btn" onclick="switchTab(&#39;ed&#39;,&#39;doh&#39;,this)">DOH Programs</button>
+        </div>
+        <div class="tab-pane active" id="ed-pregnancy">
+          <div class="edu-grid">
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--teal-pale);color:var(--teal)"><span class="ico ico-40"><svg><use href="#i-heart"></use></svg></span></div><div class="edu-body"><div class="edu-title">What to Expect: 3rd Trimester</div><div class="edu-meta">Video · 8 min · Week 28</div><span class="edu-chip" style="background:var(--teal-pale);color:var(--teal-dk);">Recommended</span></div></div>
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--coral-pale);color:var(--coral)"><span class="ico ico-40"><svg><use href="#i-info"></use></svg></span></div><div class="edu-body"><div class="edu-title">Understanding Labor &amp; Delivery</div><div class="edu-meta">Article · 8 min read</div><span class="edu-chip" style="background:var(--coral-pale);color:var(--coral);">Essential</span></div></div>
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--purple-pale);color:var(--purple)"><span class="ico ico-40"><svg><use href="#i-alert"></use></svg></span></div><div class="edu-body"><div class="edu-title">Warning Signs &amp; Emergencies</div><div class="edu-meta">Critical Reading · 6 min</div><span class="edu-chip" style="background:var(--purple-pale);color:var(--purple-dk);">New</span></div></div>
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--gold-pale);color:var(--gold)"><span class="ico ico-40"><svg><use href="#i-shield"></use></svg></span></div><div class="edu-body"><div class="edu-title">Mental Health &amp; Wellness</div><div class="edu-meta">Video + Guide · 20 min</div><span class="edu-chip" style="background:var(--gold-pale);color:var(--gold);">Self-care</span></div></div>
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--sage-lt);color:var(--sage)"><span class="ico ico-40"><svg><use href="#i-leaf"></use></svg></span></div><div class="edu-body"><div class="edu-title">Nutrition &amp; Safe Habits</div><div class="edu-meta">Article + Video · 15 min</div></div></div>
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--blue-pale);color:var(--blue)"><span class="ico ico-40"><svg><use href="#i-act"></use></svg></span></div><div class="edu-body"><div class="edu-title">Safe Exercise in Pregnancy</div><div class="edu-meta">Video · 10 min</div></div></div>
+          </div>
+        </div>
+        <div class="tab-pane" id="ed-newborn">
+          <div class="edu-grid">
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--coral-pale);color:var(--coral)"><span class="ico ico-40"><svg><use href="#i-heart"></use></svg></span></div><div class="edu-body"><div class="edu-title">Breastfeeding Basics</div><div class="edu-meta">Video · 12 min</div><span class="edu-chip" style="background:var(--coral-pale);color:var(--coral);">Essential</span></div></div>
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--teal-pale);color:var(--teal)"><span class="ico ico-40"><svg><use href="#i-leaf"></use></svg></span></div><div class="edu-body"><div class="edu-title">Introducing Solid Foods at 6 Months</div><div class="edu-meta">Article</div></div></div>
+            <div class="edu-card" onclick="openModal(&#39;m-edu&#39;)"><div class="edu-thumb" style="background:var(--gold-pale);color:var(--gold)"><span class="ico ico-40"><svg><use href="#i-book"></use></svg></span></div><div class="edu-body"><div class="edu-title">Basics of Childrearing</div><div class="edu-meta">Video Series · 5 episodes</div><span class="edu-chip" style="background:var(--gold-pale);color:var(--gold);">New</span></div></div>
+          </div>
+        </div>
+        <div class="tab-pane" id="ed-doh">
+          <div class="info-card"><h5>National Safe Motherhood Program</h5><p>Ensures safe pregnancy, delivery, and postpartum care for Filipino mothers through accessible healthcare services.</p></div>
+          <div class="info-card" style="border-left-color:var(--coral)"><h5>Unang Yakap (EINC)</h5><p>Essential Intrapartum and Newborn Care — immediate skin-to-skin contact, early breastfeeding initiation, cord clamping, and eye care for newborns.</p></div>
+          <div class="info-card" style="border-left-color:var(--gold)"><h5>First 1,000 Days (RA 11148)</h5><p>Kalusugan at Nutrisyon ng Mag-Nanay Act — focuses on nutrition from conception to 2 years old, the critical window for lifelong health.</p></div>
+          <div class="info-card" style="border-left-color:var(--purple)"><h5>MNCHN Strategy</h5><p>Maternal, Neonatal, Child Health and Nutrition strategy providing a continuum of care from prenatal to postnatal and early childhood.</p></div>
+          <div class="info-card" style="border-left-color:var(--sage)"><h5>BEmONC &amp; CEmONC Networks</h5><p>Basic and Comprehensive Emergency Obstetric and Newborn Care facilities ensuring rapid response during obstetric emergencies.</p></div>
+          <div class="info-card" style="border-left-color:var(--blue)"><h5>Micronutrient Supplementation Program</h5><p>Provides essential vitamins (iron, folic acid, Vitamin A) to pregnant and lactating mothers and children under 5.</p></div>
+        </div>
+      </div>
+
+      <!-- ── PHARMASYNC ── -->
+      <div class="ap-panel" id="panel-pharmasync">
+        <h2 class="sec-hd">PharmaSync — Prescriptions</h2>
+        <div class="card" style="background:var(--teal-pale);border-color:var(--teal-soft);margin-bottom:1.25rem;">
+          <div style="display:flex;gap:.875rem;align-items:center;">
+            <span class="ico ico-28" style="color:var(--teal)"><svg><use href="#i-plus-c"></use></svg></span>
+            <div><div style="font-weight:600;color:var(--teal-dk);">Today's Medications</div><div style="font-size:.82rem;color:var(--muted);">You have <strong>3</strong> medications to take today.</div></div>
+            <button class="save-btn" style="margin-left:auto;" onclick="showToast(&#39;All medications marked as taken&#39;,&#39;success&#39;)">Mark All Taken</button>
+          </div>
+        </div>
+        <div class="rx-card" onclick="showToast(&#39;Ferrous Sulfate: 60 mg once daily after meals. Prevents iron-deficiency anemia.&#39;,&#39;info&#39;)">
+          <div class="rx-ico" style="background:var(--coral-pale);color:var(--coral)"><span class="ico ico-22"><svg><use href="#i-plus-c"></use></svg></span></div>
+          <div style="flex:1"><div class="rx-name">Ferrous Sulfate + Folic Acid</div><div class="rx-detail">60 mg / 400 mcg · Once daily after meals · Dr. Reyes</div></div>
+          <span class="rx-status" style="background:#e8f8ee;color:#2d7a4f;">Taken Today</span>
+        </div>
+        <div class="rx-card" onclick="showToast(&#39;Calcium Carbonate: 500 mg twice daily with meals. Supports fetal bone development.&#39;,&#39;info&#39;)">
+          <div class="rx-ico" style="background:var(--blue-pale);color:var(--blue)"><span class="ico ico-22"><svg><use href="#i-shield"></use></svg></span></div>
+          <div style="flex:1"><div class="rx-name">Calcium Carbonate</div><div class="rx-detail">500 mg · Twice daily with meals · Dr. Reyes</div></div>
+          <span class="rx-status" style="background:var(--coral-pale);color:var(--coral);">Due Now</span>
+        </div>
+        <div class="rx-card" onclick="showToast(&#39;Vitamin D3: 400 IU daily. Supports calcium absorption and immune function.&#39;,&#39;info&#39;)">
+          <div class="rx-ico" style="background:var(--gold-pale);color:var(--gold)"><span class="ico ico-22"><svg><use href="#i-info"></use></svg></span></div>
+          <div style="flex:1"><div class="rx-name">Vitamin D3</div><div class="rx-detail">400 IU · Once daily · Dr. Reyes</div></div>
+          <span class="rx-status" style="background:var(--gold-pale);color:var(--gold);">Refill in 5 days</span>
+        </div>
+        <div class="rx-card" onclick="showToast(&#39;Metformin under review — pending evaluation by Dr. Reyes.&#39;,&#39;warn&#39;)">
+          <div class="rx-ico" style="background:var(--purple-pale);color:var(--purple)"><span class="ico ico-22"><svg><use href="#i-alert"></use></svg></span></div>
+          <div style="flex:1"><div class="rx-name">Metformin (Conditional)</div><div class="rx-detail">500 mg · Per OGTT result · For evaluation</div></div>
+          <span class="rx-status" style="background:var(--purple-pale);color:var(--purple);">Pending Review</span>
+        </div>
+        <div class="card">
+          <div class="card-hd"><span class="card-title">Upload New Prescription</span></div>
+          <div style="border:2px dashed var(--border-md);border-radius:var(--r-sm);padding:2rem;text-align:center;cursor:pointer;transition:.2s;" onclick="showToast(&#39;File upload coming soon&#39;,&#39;info&#39;)" onmouseover="this.style.borderColor=&#39;var(--teal)&#39;" onmouseout="this.style.borderColor=&#39;var(--border-md)&#39;">
+            <span class="ico ico-32" style="color:var(--muted);display:block;margin:0 auto .75rem;"><svg><use href="#i-file"></use></svg></span>
+            <div style="font-size:.875rem;font-weight:600;color:var(--teal-dkst);">Drag &amp; drop prescription image</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:.3rem;">or click to browse (JPG, PNG, PDF)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── NUTRIBASE ── -->
+      <div class="ap-panel" id="panel-nutribase">
+        <h2 class="sec-hd">NutriBase — Nutrition &amp; Meal Plans</h2>
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab(&#39;nb&#39;,&#39;mealplan&#39;,this)">Meal Plan</button>
+          <button class="tab-btn" onclick="switchTab(&#39;nb&#39;,&#39;bflog&#39;,this)">Breastfeeding Log</button>
+          <button class="tab-btn" onclick="switchTab(&#39;nb&#39;,&#39;nutrients&#39;,this)">Key Nutrients</button>
+          <button class="tab-btn" onclick="switchTab(&#39;nb&#39;,&#39;solids&#39;,this)">Solid Foods</button>
+        </div>
+        <div class="tab-pane active" id="nb-mealplan">
+          <div class="card" style="margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+              <div><div style="font-size:.78rem;color:var(--muted);">Daily Target (Pregnancy)</div><div style="font-family:&#39;Playfair Display&#39;,serif;font-size:1.9rem;font-weight:600;color:var(--teal-dkst);">2,200 <span style="font-size:.9rem;font-weight:400;">kcal</span></div></div>
+              <div style="text-align:right;"><div style="font-size:.78rem;color:var(--muted);">Consumed</div><div style="font-family:&#39;Playfair Display&#39;,serif;font-size:1.9rem;font-weight:600;color:var(--teal);">1,480 <span style="font-size:.9rem;font-weight:400;">kcal</span></div></div>
+            </div>
+            <div class="prog-bar" style="height:10px;"><div class="prog-fill" style="width:67%"></div></div>
+            <div style="font-size:.75rem;color:var(--muted);margin-top:.4rem;">720 kcal remaining</div>
+          </div>
+          <div class="card">
+            <div class="meal-section"><h5>Breakfast</h5>
+              <div class="meal-item" onclick="showToast(&#39;Rich in protein &amp; iron&#39;,&#39;info&#39;)"><div class="meal-ico" style="color:var(--gold)"><span class="ico ico-18"><svg><use href="#i-leaf"></use></svg></span></div><div><div class="meal-name">Sinangag with Itlog at Isda</div><div class="meal-cal">380 kcal · High in protein &amp; iron</div></div><span class="meal-badge">380 kcal</span></div>
+              <div class="meal-item" onclick="showToast(&#39;Calcium-rich&#39;,&#39;info&#39;)"><div class="meal-ico" style="color:var(--blue)"><span class="ico ico-18"><svg><use href="#i-plus-c"></use></svg></span></div><div><div class="meal-name">Low-fat Milk (240ml)</div><div class="meal-cal">120 kcal · Calcium-rich</div></div><span class="meal-badge">120 kcal</span></div>
+            </div>
+            <div class="meal-section"><h5>Lunch</h5>
+              <div class="meal-item" onclick="showToast(&#39;Vitamin C &amp; Iron source&#39;,&#39;info&#39;)"><div class="meal-ico" style="color:var(--sage)"><span class="ico ico-18"><svg><use href="#i-leaf"></use></svg></span></div><div><div class="meal-name">Tinolang Manok with Dahon ng Sili</div><div class="meal-cal">320 kcal · Vitamin C &amp; Iron</div></div><span class="meal-badge">320 kcal</span></div>
+              <div class="meal-item" onclick="showToast(&#39;High fiber complex carbs&#39;,&#39;info&#39;)"><div class="meal-ico" style="color:var(--gold)"><span class="ico ico-18"><svg><use href="#i-chart"></use></svg></span></div><div><div class="meal-name">Brown Rice (1 cup)</div><div class="meal-cal">215 kcal · High fiber</div></div><span class="meal-badge">215 kcal</span></div>
+            </div>
+            <div class="meal-section"><h5>Dinner (Planned)</h5>
+              <div class="meal-item" onclick="showToast(&#39;Omega-3 rich&#39;,&#39;info&#39;)"><div class="meal-ico" style="color:var(--blue)"><span class="ico ico-18"><svg><use href="#i-act"></use></svg></span></div><div><div class="meal-name">Grilled Tilapia with Steamed Veggies</div><div class="meal-cal">280 kcal · Omega-3 rich</div></div><span class="meal-badge">280 kcal</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="nb-bflog">
+          <div class="card" style="margin-bottom:1rem;">
+            <div class="card-hd"><span class="card-title">Log Feeding Session</span><button class="save-btn" onclick="logFeed()">+ Log</button></div>
+            <div class="form-row form-row-3"><div class="form-group"><label>Time</label><input type="time" id="feed-time"></div><div class="form-group"><label>Duration (min)</label><input type="number" id="feed-dur" placeholder="e.g. 15"></div><div class="form-group"><label>Side</label><select id="feed-side"><option>Left</option><option>Right</option><option>Both</option></select></div></div>
+          </div>
+          <div class="card"><div class="card-hd"><span class="card-title">Today's Sessions</span></div>
+            <div id="feed-log">
+              <div class="feed-entry"><span class="fe-time">6:00 AM</span><span class="fe-dur">18 minutes</span><span class="fe-side">Left</span></div>
+              <div class="feed-entry"><span class="fe-time">9:30 AM</span><span class="fe-dur">12 minutes</span><span class="fe-side">Right</span></div>
+              <div class="feed-entry"><span class="fe-time">1:00 PM</span><span class="fe-dur">20 minutes</span><span class="fe-side">Both</span></div>
+            </div>
+          </div>
+          <div class="info-card" style="border-left-color:var(--coral)"><h5>Breastfeeding Tip</h5><p>Feed on demand — at least 8–12 times in 24 hours for newborns. Ensure a good latch to prevent nipple soreness.</p></div>
+        </div>
+        <div class="tab-pane" id="nb-nutrients">
+          <div class="g2">
+            <div class="info-card" style="cursor:pointer;" onclick="showToast(&#39;Folic Acid: prevents neural tube defects&#39;,&#39;info&#39;)"><h5>Folic Acid — 400–600 mcg/day</h5><p>Prevents neural tube defects. Found in dark leafy greens, legumes, and fortified foods.</p></div>
+            <div class="info-card" style="border-left-color:var(--coral);cursor:pointer;" onclick="showToast(&#39;Iron: prevents anemia in mother and baby&#39;,&#39;info&#39;)"><h5>Iron — 27 mg/day</h5><p>Prevents anemia. Found in red meat, fish, spinach, and fortified cereals. Take with Vitamin C.</p></div>
+            <div class="info-card" style="border-left-color:var(--gold);cursor:pointer;" onclick="showToast(&#39;Calcium: supports fetal bone development&#39;,&#39;info&#39;)"><h5>Calcium — 1,000 mg/day</h5><p>Builds baby's bones and teeth. Found in dairy, tofu, sardines, and dark leafy greens.</p></div>
+            <div class="info-card" style="border-left-color:var(--purple);cursor:pointer;" onclick="showToast(&#39;DHA: supports brain and eye development&#39;,&#39;info&#39;)"><h5>DHA / Omega-3 — 200–300 mg/day</h5><p>Critical for fetal brain and eye development. Found in tilapia and galunggong.</p></div>
+          </div>
+          <div class="card" style="background:#fff5f5;border-color:var(--coral);">
+            <div class="card-hd"><span class="card-title" style="color:var(--coral);">Foods to Avoid During Pregnancy</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+              <span class="cbadge cbadge-r">Raw / undercooked meat</span>
+              <span class="cbadge cbadge-r">High-mercury fish</span>
+              <span class="cbadge cbadge-r">Unpasteurized dairy</span>
+              <span class="cbadge cbadge-r">Alcohol</span>
+              <span class="cbadge cbadge-r">Excessive caffeine</span>
+              <span class="cbadge cbadge-r">Raw eggs</span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="nb-solids">
+          <div class="info-card"><h5>Liam is 3 months old — Too early for solids</h5><p>Exclusive breastfeeding is recommended until 6 months. Solid foods introduction planned for August 2026.</p></div>
+          <div class="card"><div class="card-hd"><span class="card-title">Introduction Checklist (at 6 months)</span></div>
+            <table><tbody><tr><th>Month</th><th>Foods</th><th>Texture</th><th>Done</th></tr>
+              <tr><td>6 months</td><td>Rice cereal, mashed camote, sayote</td><td>Purée / thin mash</td><td><input type="checkbox" style="accent-color:var(--teal)"></td></tr>
+              <tr><td>7 months</td><td>Mashed banana, avocado, egg yolk</td><td>Soft mash</td><td><input type="checkbox" style="accent-color:var(--teal)"></td></tr>
+              <tr><td>8–9 months</td><td>Soft meats, beans, pasta</td><td>Minced / soft chunks</td><td><input type="checkbox" style="accent-color:var(--teal)"></td></tr>
+              <tr><td>10–12 months</td><td>Family foods (chopped)</td><td>Soft finger foods</td><td><input type="checkbox" style="accent-color:var(--teal)"></td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARELINE ── -->
+      <div class="ap-panel" id="panel-careline">
+        <h2 class="sec-hd">CareLine — Secure Communication</h2>
+        <div class="chat-shell">
+          <div class="chat-contacts">
+            <h5>Care Team</h5>
+            <div class="chat-contact active" onclick="selectChat(&#39;Dr. Ana Reyes&#39;,&#39;OB-GYNE · Online&#39;,this)">
+              <div class="cc-avatar"><span class="ico ico-18"><svg><use href="#i-steth"></use></svg></span></div>
+              <div><div class="cc-name">Dr. Reyes</div><div class="cc-role">OB-GYNE</div></div>
+              <div class="cc-dot"></div>
+            </div>
+            <div class="chat-contact" onclick="selectChat(&#39;RN. Liza Mendoza&#39;,&#39;Primary Nurse&#39;,this)">
+              <div class="cc-avatar" style="background:var(--coral-pale);color:var(--coral)"><span class="ico ico-18"><svg><use href="#i-user"></use></svg></span></div>
+              <div><div class="cc-name">RN. Mendoza <span class="ap-nav-badge" style="font-size:.6rem;">2</span></div><div class="cc-role">Receiving Nurse</div></div>
+              <div class="cc-dot" style="background:var(--gold)"></div>
+            </div>
+            <div class="chat-contact" onclick="openModal(&#39;m-video&#39;)">
+              <div class="cc-avatar" style="background:var(--blue-pale);color:var(--blue)"><span class="ico ico-18"><svg><use href="#i-video"></use></svg></span></div>
+              <div><div class="cc-name">Schedule Call</div><div class="cc-role">Virtual consult</div></div>
+            </div>
+          </div>
+          <div class="chat-main">
+            <div class="chat-topbar">
+              <div><h5 id="chat-name">Dr. Ana Reyes</h5><span id="chat-role">OB-GYNE · Online</span></div>
+              <button class="ap-topbar-btn" onclick="showToast(&#39;Starting video call…&#39;,&#39;info&#39;)" style="display:flex;align-items:center;gap:.4rem;font-size:.78rem;"><span class="ico ico-16"><svg><use href="#i-video"></use></svg></span>Video Call</button>
+            </div>
+            <div class="chat-msgs" id="chat-msgs">
+              <div class="msg received"><div class="msg-bubble">Good morning Maria! How are you feeling today? Any concerns about your OGTT result?</div><div class="msg-time">9:15 AM</div></div>
+              <div class="msg sent"><div class="msg-bubble">Good morning po, Doc! I'm feeling okay, just a bit worried about the borderline glucose result.</div><div class="msg-time">9:18 AM</div></div>
+              <div class="msg received"><div class="msg-bubble">That's understandable! It's borderline, so we just need to monitor your diet and get a repeat test in 2 weeks. I've updated your NutriBase plan to reduce refined sugars.</div><div class="msg-time">9:20 AM</div></div>
+            </div>
+            <div class="chat-input-bar">
+              <input class="chat-inp" id="chat-inp" placeholder="Type a message to your care team…" onkeydown="if(event.key===&#39;Enter&#39;)sendMsg()">
+              <button class="chat-send" onclick="sendMsg()"><span class="ico ico-18"><svg><use href="#i-send"></use></svg></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── VITALSYNC ── -->
+      <div class="ap-panel" id="panel-vitalsync">
+        <h2 class="sec-hd">VitalSync Kit — Remote Monitoring</h2>
+        <div style="background:var(--sage-lt);border-radius:var(--r-sm);padding:.75rem 1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;">
+          <span class="pulse-ring"></span>
+          <span style="font-size:.82rem;color:var(--sage);font-weight:600;">All devices synced and transmitting · Last updated: Today, 3:47 PM</span>
+          <button class="save-btn" style="margin-left:auto;font-size:.75rem;padding:.35rem .875rem;" onclick="showToast(&#39;Syncing all devices…&#39;,&#39;success&#39;)">Sync Now</button>
+        </div>
+        <div class="vital-cards">
+          <div class="vital-card"><div class="vc-ico ico ico-28" style="color:var(--coral);display:flex;margin:0 auto .4rem;"><svg><use href="#i-heart"></use></svg></div><div class="vc-val">118<span style="font-size:1rem">/76</span></div><div class="vc-unit">mmHg</div><div class="vc-lbl">Blood Pressure</div><span class="vc-status vcs-ok">Normal</span></div>
+          <div class="vital-card"><div class="vc-ico ico ico-28" style="color:var(--teal);display:flex;margin:0 auto .4rem;"><svg><use href="#i-act"></use></svg></div><div class="vc-val">84</div><div class="vc-unit">bpm</div><div class="vc-lbl">Heart Rate</div><span class="vc-status vcs-ok">Normal</span></div>
+          <div class="vital-card"><div class="vc-ico ico ico-28" style="color:var(--gold);display:flex;margin:0 auto .4rem;"><svg><use href="#i-therm"></use></svg></div><div class="vc-val">36.6</div><div class="vc-unit">°C</div><div class="vc-lbl">Temperature</div><span class="vc-status vcs-ok">Afebrile</span></div>
+          <div class="vital-card"><div class="vc-ico ico ico-28" style="color:var(--blue);display:flex;margin:0 auto .4rem;"><svg><use href="#i-info"></use></svg></div><div class="vc-val">98</div><div class="vc-unit">%</div><div class="vc-lbl">SpO₂ (Oxygen)</div><span class="vc-status vcs-ok">Normal</span></div>
+          <div class="vital-card"><div class="vc-ico ico ico-28" style="color:var(--sage);display:flex;margin:0 auto .4rem;"><svg><use href="#i-scale"></use></svg></div><div class="vc-val">62</div><div class="vc-unit">kg</div><div class="vc-lbl">Body Weight</div><span class="vc-status vcs-watch">+7 kg (pregnancy)</span></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><span class="card-title">Vital Signs History (Last 7 Days)</span></div>
+          <table><tbody><tr><th>Date</th><th>BP (mmHg)</th><th>HR (bpm)</th><th>Temp (°C)</th><th>Weight (kg)</th><th>Status</th></tr>
+            <tr><td>May 14</td><td>118/76</td><td>84</td><td>36.6</td><td>62.0</td><td><span class="vax-status vs-done">All Normal</span></td></tr>
+            <tr><td>May 13</td><td>120/78</td><td>86</td><td>36.5</td><td>61.8</td><td><span class="vax-status vs-done">All Normal</span></td></tr>
+            <tr><td>May 12</td><td>122/80</td><td>88</td><td>36.8</td><td>61.7</td><td><span class="vax-status vs-upcoming">Slightly Elevated</span></td></tr>
+            <tr><td>May 11</td><td>116/74</td><td>82</td><td>36.6</td><td>61.5</td><td><span class="vax-status vs-done">All Normal</span></td></tr>
+            <tr><td>May 10</td><td>115/73</td><td>80</td><td>36.7</td><td>61.5</td><td><span class="vax-status vs-done">All Normal</span></td></tr>
+          </tbody></table>
+        </div>
+        <div class="card" style="background:#fff5f5;border-color:var(--coral);">
+          <div class="card-hd"><span class="card-title" style="color:var(--coral);">Alert Thresholds</span><button class="save-btn" onclick="showToast(&#39;Thresholds saved&#39;,&#39;success&#39;)">Save</button></div>
+          <div class="form-row form-row-3">
+            <div class="form-group"><label>High BP Alert (mmHg)</label><input value="140/90"></div>
+            <div class="form-group"><label>Low SpO₂ (%)</label><input value="94"></div>
+            <div class="form-group"><label>Fever Threshold (°C)</label><input value="37.5"></div>
+          </div>
+          <p style="font-size:.75rem;color:var(--muted);">Dr. Reyes &amp; RN. Mendoza will be notified automatically if any reading exceeds these thresholds.</p>
+        </div>
+      </div>
+
+    </div><!-- /ap-content -->
+  </main>
+</div><!-- /v-app -->
+
+<!-- ═══════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="m-notif" onclick="if(event.target===this)closeModal(&#39;m-notif&#39;)">
+  <div class="modal"><button class="modal-close" onclick="closeModal(&#39;m-notif&#39;)">✕</button>
+    <h3>Notifications</h3>
+    <div style="display:flex;flex-direction:column;gap:.625rem;margin-top:.875rem;">
+      <div class="sched-item" style="margin:0;"><div class="sched-dot" style="background:var(--coral)"></div><div><div class="sched-lbl">Prenatal check-up on May 20</div><div class="sched-sub">Reminder set · Dr. Reyes</div></div></div>
+      <div class="sched-item" style="margin:0;"><div class="sched-dot" style="background:var(--gold)"></div><div><div class="sched-lbl">Baby Liam's DPT-HepB-HiB due May 22</div><div class="sched-sub">8 days away</div></div></div>
+      <div class="sched-item" style="margin:0;"><div class="sched-dot" style="background:var(--teal)"></div><div><div class="sched-lbl">2 unread messages from Nurse Mendoza</div><div class="sched-sub">CareLine · 1 hour ago</div></div></div>
+      <div class="sched-item" style="margin:0;"><div class="sched-dot" style="background:var(--sage)"></div><div><div class="sched-lbl">New EmpowerEd lesson available</div><div class="sched-sub">Warning Signs &amp; Emergencies · Just added</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m-edu" onclick="if(event.target===this)closeModal(&#39;m-edu&#39;)">
+  <div class="modal"><button class="modal-close" onclick="closeModal(&#39;m-edu&#39;)">✕</button>
+    <h3>EmpowerEd Lesson</h3>
+    <div style="background:var(--teal-pale);border-radius:var(--r-sm);height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;cursor:pointer;"><span class="ico ico-40" style="color:var(--teal)"><svg><use href="#i-book"></use></svg></span></div>
+    <h4 style="font-size:1.1rem;margin-bottom:.4rem;">What to Expect: 3rd Trimester</h4>
+    <p>During the third trimester (weeks 28–40), your body undergoes significant changes to prepare for birth. This lesson covers what's normal, warning signs to watch for, and how to prepare your birth plan.</p>
+    <div class="modal-actions"><button class="btn-cancel" onclick="closeModal(&#39;m-edu&#39;)">Close</button><button class="btn-confirm" onclick="showToast(&#39;Opening full resource…&#39;,&#39;info&#39;);closeModal(&#39;m-edu&#39;)">Open Resource</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m-video" onclick="if(event.target===this)closeModal(&#39;m-video&#39;)">
+  <div class="modal"><button class="modal-close" onclick="closeModal(&#39;m-video&#39;)">✕</button>
+    <h3>Schedule a Video Consult</h3>
+    <div class="form-row" style="margin-top:.875rem;"><div class="form-group full"><label>Healthcare Provider</label><select><option>Dr. Ana Reyes – OB-GYNE</option><option>RN. Liza Mendoza – Primary Nurse</option></select></div><div class="form-group"><label>Preferred Date</label><input type="date"></div><div class="form-group"><label>Preferred Time</label><input type="time"></div><div class="form-group full"><label>Reason for Consult</label><textarea placeholder="Brief description of your concern…"></textarea></div></div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="closeModal(&#39;m-video&#39;)">Cancel</button><button class="btn-confirm" onclick="showToast(&#39;Appointment request sent!&#39;,&#39;success&#39;);closeModal(&#39;m-video&#39;)">Request Appointment</button></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast success" id="toast">Welcome back, Maria!</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   VIEW MANAGEMENT
+══════════════════════════════════════════════ */
+function showLanding() {
+  document.getElementById('v-login').classList.remove('show');
+  document.getElementById('v-app').classList.remove('show');
+  document.getElementById('v-landing').classList.add('show');
+  document.body.style.overflow = '';
+}
+
+function showLogin() {
+  document.getElementById('v-landing').classList.remove('show');
+  document.getElementById('v-app').classList.remove('show');
+  const el = document.getElementById('v-login');
+  el.style.display = 'flex';
+  el.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function doLogin() {
+  const email = document.getElementById('lg-email').value.trim();
+  if (!email) { showToast('Please enter your email address','warn'); return; }
+  document.getElementById('v-login').classList.remove('show');
+  const app = document.getElementById('v-app');
+  app.style.display = 'grid';
+  app.classList.add('show');
+  document.getElementById('v-landing').classList.remove('show');
+  renderReminders();
+  showToast('Welcome back, Maria!','success');
+}
+
+function doLogout() {
+  document.getElementById('v-app').classList.remove('show');
+  showLanding();
+}
+
+/* ══════════════════════════════════════════════
+   LOGIN ROLE SELECTOR
+══════════════════════════════════════════════ */
+function selectRole(btn) {
+  document.querySelectorAll('.lg-role-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+/* ══════════════════════════════════════════════
+   PANEL NAVIGATION
+══════════════════════════════════════════════ */
+const panelMeta = {
+  dashboard:  ['Dashboard','Good morning, Maria — Week 28 of pregnancy'],
+  maternalog: ['MaternaLog','Your pregnancy journal & clinical records'],
+  neonotes:   ['NeoNotes','Baby Liam\'s digital book & health tracker'],
+  empowered:  ['EmpowerEd','Health education library — personalized for you'],
+  pharmasync: ['PharmaSync','Your active prescriptions & medication schedule'],
+  nutribase:  ['NutriBase','Meal plans, breastfeeding log & nutrition guide'],
+  careline:   ['CareLine','Secure messaging & video calls with your care team'],
+  vitalsync:  ['VitalSync Kit','Real-time vitals from your connected devices'],
+};
+
+function showPanel(id, btn) {
+  document.querySelectorAll('.ap-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ap-nav-btn').forEach(n => n.classList.remove('active'));
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  if (btn && btn.classList.contains('ap-nav-btn')) btn.classList.add('active');
+  const meta = panelMeta[id];
+  if (meta) {
+    document.getElementById('ap-title').textContent = meta[0];
+    document.getElementById('ap-meta').textContent = meta[1];
+  }
+  document.querySelector('.ap-content').scrollTop = 0;
+  // sync bottom nav
+  const bnMap = {dashboard:'bn-dashboard',maternalog:'bn-maternalog',careline:'bn-careline',vitalsync:'bn-vitalsync'};
+  document.querySelectorAll('.ap-bn-btn').forEach(b => b.classList.remove('active'));
+  if (bnMap[id]) {
+    const bnBtn = document.getElementById(bnMap[id]);
+    if (bnBtn) bnBtn.classList.add('active');
+  }
+}
+
+/* ══════════════════════════════════════════════
+   TAB SWITCHING
+══════════════════════════════════════════════ */
+function switchTab(prefix, id, btn) {
+  document.querySelectorAll('[id^="' + prefix + '-"]').forEach(p => p.classList.remove('active'));
+  btn.closest('.tab-bar').querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  const pane = document.getElementById(prefix + '-' + id);
+  if (pane) pane.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+/* ══════════════════════════════════════════════
+   REMINDERS
+══════════════════════════════════════════════ */
+const reminders = [
+  { text: 'Take Ferrous Sulfate after breakfast', done: true },
+  { text: 'Log blood pressure reading', done: false },
+  { text: 'Calcium supplement — after lunch', done: false },
+  { text: 'Check-in message to RN. Mendoza', done: false },
+];
+
+function renderReminders() {
+  const el = document.getElementById('reminder-list');
+  if (!el) return;
+  el.innerHTML = reminders.map((r, i) => `
+    <div onclick="toggleReminder(${i})" style="display:flex;align-items:center;gap:.65rem;padding:.55rem 0;border-bottom:1px solid var(--border);cursor:pointer;">
+      <div style="width:20px;height:20px;border-radius:50%;border:2px solid ${r.done?'var(--sage)':'var(--border-md)'};background:${r.done?'var(--sage)':'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.65rem;transition:all .2s;">${r.done?'✓':''}</div>
+      <span style="font-size:.85rem;text-decoration:${r.done?'line-through':''};color:${r.done?'var(--muted)':'var(--ink)'};">${r.text}</span>
+    </div>`).join('');
+}
+
+function toggleReminder(i) {
+  reminders[i].done = !reminders[i].done;
+  renderReminders();
+  if (reminders[i].done) showToast('Task completed!','success');
+}
+
+/* ══════════════════════════════════════════════
+   JOURNAL
+══════════════════════════════════════════════ */
+let selectedMood = 'Happy';
+function selectMood(btn, mood) {
+  document.querySelectorAll('[onclick*="selectMood"]').forEach(b => b.style.outline = 'none');
+  btn.style.outline = '2px solid var(--teal)';
+  selectedMood = mood;
+}
+
+function saveJournal() {
+  const txt = document.getElementById('journal-text').value.trim();
+  if (!txt) { showToast('Please write something first','warn'); return; }
+  const dateEl = document.getElementById('journal-date');
+  const d = dateEl.value ? new Date(dateEl.value).toLocaleDateString('en-PH',{month:'long',day:'numeric',year:'numeric'}) : 'Today';
+  const colorMap = {Happy:'cbadge-g',Tired:'cbadge-o',Anxious:'cbadge-p',Unwell:'cbadge-r'};
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.innerHTML = `<div class="card-hd"><span class="card-title">${d} · Week 28</span><span class="cbadge ${colorMap[selectedMood]||'cbadge-g'}">${selectedMood}</span></div><p style="font-size:.875rem;line-height:1.65;">${txt}</p>`;
+  document.getElementById('journal-entries').prepend(el);
+  document.getElementById('journal-text').value = '';
+  showToast('Journal entry saved','success');
+}
+
+/* ══════════════════════════════════════════════
+   MILESTONES
+══════════════════════════════════════════════ */
+function toggleMs(item) {
+  const chk = item.querySelector('.ms-chk');
+  const done = chk.classList.toggle('done');
+  chk.innerHTML = done ? '<span class="ico ico-14"><svg><use href="#i-check"/></svg></span>' : '';
+  showToast(done ? 'Milestone achieved!' : 'Milestone unmarked','success');
+}
+
+/* ══════════════════════════════════════════════
+   CHAT
+══════════════════════════════════════════════ */
+function selectChat(name, role, el) {
+  document.querySelectorAll('.chat-contact').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('chat-name').textContent = name;
+  document.getElementById('chat-role').textContent = role;
+}
+
+function sendMsg() {
+  const inp = document.getElementById('chat-inp');
+  const msg = inp.value.trim();
+  if (!msg) return;
+  const container = document.getElementById('chat-msgs');
+  const now = new Date().toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'});
+  const el = document.createElement('div');
+  el.className = 'msg sent';
+  el.innerHTML = `<div class="msg-bubble">${msg}</div><div class="msg-time">${now}</div>`;
+  container.appendChild(el);
+  inp.value = '';
+  container.scrollTop = container.scrollHeight;
+  setTimeout(() => {
+    const replies = [
+      'Thank you for the update, Maria! I\'ll note that in your chart.',
+      'Got it! I\'ll review and get back to you shortly.',
+      'That sounds normal for 28 weeks. Let me check your latest readings.',
+      'I\'ll flag this for Dr. Reyes as well. Stay calm and stay hydrated!',
+    ];
+    const rep = document.createElement('div');
+    rep.className = 'msg received';
+    rep.innerHTML = `<div class="msg-bubble">${replies[Math.floor(Math.random()*replies.length)]}</div><div class="msg-time">${now}</div>`;
+    container.appendChild(rep);
+    container.scrollTop = container.scrollHeight;
+  }, 1300);
+}
+
+/* ══════════════════════════════════════════════
+   BREASTFEEDING LOG
+══════════════════════════════════════════════ */
+function logFeed() {
+  const time = document.getElementById('feed-time').value;
+  const dur = document.getElementById('feed-dur').value;
+  const side = document.getElementById('feed-side').value;
+  if (!time || !dur) { showToast('Please fill in time and duration','warn'); return; }
+  const el = document.createElement('div');
+  el.className = 'feed-entry';
+  el.innerHTML = `<span class="fe-time">${time}</span><span class="fe-dur">${dur} minutes</span><span class="fe-side">${side}</span>`;
+  document.getElementById('feed-log').prepend(el);
+  showToast('Feeding session logged','success');
+}
+
+/* ══════════════════════════════════════════════
+   MODALS
+══════════════════════════════════════════════ */
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+/* ══════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════ */
+function showToast(msg, type='info') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + type;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+document.getElementById('journal-date').valueAsDate = new Date();
+
+/* ══════════════════════════════════════════════
+   MOBILE NAV DRAWER
+══════════════════════════════════════════════ */
+function openDrawer() {
+  document.getElementById('mobile-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  document.getElementById('mobile-drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ══════════════════════════════════════════════
+   APP BOTTOM NAV
+══════════════════════════════════════════════ */
+function setBottomNav(activeBtn) {
+  document.querySelectorAll('.ap-bn-btn').forEach(b => b.classList.remove('active'));
+  if (activeBtn && activeBtn.classList.contains('ap-bn-btn')) activeBtn.classList.add('active');
+}
+
+function openMoreDrawer() {
+  document.getElementById('more-drawer').classList.add('open');
+  document.getElementById('more-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMoreDrawer() {
+  document.getElementById('more-drawer').classList.remove('open');
+  document.getElementById('more-backdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* sync sidebar nav clicks with bottom nav on resize */
+</script>
+
+
+</body></html>
